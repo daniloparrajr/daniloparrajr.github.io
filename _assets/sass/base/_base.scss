@@ -1,0 +1,17 @@
+body {
+    font-family: $font__body;
+    color: $color__text;
+    overflow-x: hidden;
+    transition: all .5s;
+    display: grid;
+}
+
+::selection {
+    background: $color__primary;
+    color: #fff;
+}
+
+img, figure {
+    max-width: 100%;
+    height: auto;
+}

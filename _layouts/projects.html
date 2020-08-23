@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <p class="h4 u-font-normal">Made is a Jekyll theme</p>
+                <h1 class="display-3">For designers and web developers</h1>
+            </div>
+            <div class="col-6 offset-6">
+                <p class="h4 u-font-normal">Show off your best work with this beautiful, minimal and customizable portfolio theme.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+
+    {% for project in site.projects %}
+
+        <article class="project-overview project-overview--{{project.accent}} container">
+            <h2 class="project-overview__title h1"><a href="{{ project.url }}">{{ project.name }}</a></h2>
+            
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for slide in project.gallery %}
+                        <div class="swiper-slide">
+                            <img class="project-overview__img" src="{{ site.baseurl }}/assets/images/{{ slide.image }}" alt={{ slide.alt }}/>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="row project-overview__details">
+                <div class="col">
+                    <p class="project-overview__description h5 u-font-normal">{{ project.excerpt }}</p>
+                </div>
+                <div class="col">
+                    <p class="project-overview__description">{{ project.description }}</p>
+                    <p><a href="{{ project.url }}" class="project-overview__link btn btn-link"><strong>VIEW CASE STUDY</strong> {%- include icons/arrow-right.svg -%} </a></p>
+                </div>
+            </div>
+        </article>
+
+    {% endfor %}
+
+</section>
+
+{%- include about.html -%}

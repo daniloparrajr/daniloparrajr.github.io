@@ -1,0 +1,26 @@
+// Required Bootstrap files
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+$display3-size: 4rem;
+$display3-weight: 700;
+$display4-weight: 700;
+
+body {
+    font-family: $font__body;
+}
+
+$headings-font-family: $font__heading;
+$headings-font-weight: 700;
+$headings-margin-bottom: 1.5rem;
+
+@import "../../../node_modules/bootstrap/scss/type";
+
+p {
+    line-height: 1.6;
+}
+
+.u-font-normal {
+    font-weight: 400;
+}

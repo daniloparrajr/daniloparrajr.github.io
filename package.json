@@ -1,0 +1,52 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "Personal website that features my blog and portfolio",
+  "main": "index.js",
+  "scripts": {
+    "clean": "npm run folders:remove && npm run folders:create",
+    "folders:remove": "rimraf ./assets",
+    "folders:create": "mkdir assets\\images && mkdir assets\\css && mkdir assets\\js",
+    "images": "npx imagemin _assets/images/**/* --out-dir=assets/images",
+    "dev:sass": "sass _assets/sass:assets/css --style=expanded",
+    "dev:js": "npx webpack --mode=development",
+    "watch:sass": "sass _assets/sass:assets/css --watch --style=expanded",
+    "watch:js": "npx webpack --mode=development --watch",
+    "watch:jekyll": "bundle exec jekyll serve --incremental",
+    "prod:css": "npm run prod:sass && npm run prod:postcss",
+    "prod:js": "npx webpack --mode=production",
+    "prod:sass": "sass _assets/sass:assets/css --no-source-map --style=compressed",
+    "prod:postcss": "npx postcss --config postcss.config.js assets/css/*.css --replace",
+    "hash:js:": "npx hashmark -r -l 10 assets/js/*.js assets/js/{name}-{hash}.js",
+    "hash:css": "npx hashmark -r -l 10 assets/css/*.css assets/css/{name}-{hash}.css",
+    "prestart": "npm run clean && npm run images",
+    "start": "concurrently \"npm:dev:*\" && concurrently \"npm:watch:*\"",
+    "prebuild": "npm run clean && npm run images",
+    "build": "npm run prod:css & npm run prod:js & concurrently \"npm:hash:*\""
+  },
+  "author": "Danilo Parra Jr.",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "swiper": "^6.1.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "autoprefixer": "^9.8.6",
+    "babel-loader": "^8.1.0",
+    "concurrently": "^5.3.0",
+    "cross-env": "^7.0.2",
+    "hashmark": "^5.0.0",
+    "imagemin-cli": "^6.0.0",
+    "postcss-cli": "^7.1.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.10",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-merge": "^5.1.2"
+  },
+  "browserslist": [
+    "last 20 version"
+  ]
+}

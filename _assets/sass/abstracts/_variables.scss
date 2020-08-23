@@ -1,0 +1,24 @@
+// Required Bootstrap files
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+$font__heading: 'Rubik', sans-serif;
+$font__body: 'Roboto', sans-serif;
+
+$color__primary: #396AD3;
+$color__text: #202224;
+
+$primary: $color__primary;
+
+$theme-colors: (
+    "primary": #364CE3,
+);
+
+$colors: (
+    "teal": #2AB9B7,
+    "purple": #396AD3,
+);
+
+$theme-colors: map-remove( $theme-colors, "info", "light", "dark" );
+$colors: map-remove( $colors, "cyan", "blue", "indigo", "pink", "red", "orange", "green" );

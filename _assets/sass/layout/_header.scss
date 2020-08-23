@@ -1,0 +1,28 @@
+.site-header {
+    padding: 15px;
+    .columns {
+        align-items: center;
+    }
+}
+
+.site-title {
+    font-family: $font__heading;
+    font-weight: 700;
+    margin: 0;
+}
+
+@include media-breakpoint-up(md) {
+    .site-header {
+        padding: 64px 0;
+        &__cta {
+            text-align: right;
+        }
+        &__nav {
+            text-align: center;
+        }
+    }
+
+    .site-title {
+        font-size: 45px;
+    }
+}

@@ -1,0 +1,14 @@
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 300ms ease-in-out;
+
+    &:active,
+    &:hover {
+        color: $color__primary;
+    }
+
+    &:visited {
+        opacity: 0.9;
+    }
+}

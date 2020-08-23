@@ -1,0 +1,25 @@
+<footer class="site-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col col-logo">
+                <p class="site-title"><a class="site-title__link" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a></p>
+            </div>
+            <div class="col col-copyright">
+                <p>A beautiful, minimal portfolio Jekyll theme</p>
+                <p>&copy; 2020 Made Jekyll Themes</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{%- if jekyll.environment == 'development' -%}
+    <script src="{{ "/assets/js/main.js" | relative_url }}?{{ site.time | date: '%s%N' }}" defer></script>
+{%- endif -%}
+
+{%- if jekyll.environment == 'production' -%}
+    {% for js in site.static_files %}
+        {% if js.path contains "assets/js" %}
+            <script src="{{ js.path | relative_url }}" defer></script>
+        {% endif %}
+    {% endfor %}
+{%- endif -%}

@@ -1,0 +1,53 @@
+.project-overview {
+    border-bottom: 2px solid $color__primary;
+    padding-bottom: 3.125rem;
+    margin-bottom: 6.25rem;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    &__title {
+        margin-bottom: 2rem;
+    }
+
+    &__details {
+        margin-top: 2rem;
+    }
+
+    &--teal {
+        border-color: #2bb8b8;
+
+        .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            background-color: #2bb8b8;
+        }
+
+        .btn-link {
+            color: #2bb8b8;
+        }
+    }
+
+    &--violet {
+        border-color: #996FCF;
+
+        .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            background-color: #996FCF;
+        }
+
+        .btn-link {
+            color: #996FCF;
+        }
+    }
+
+    &--purple {
+        border-color: #4C60E6;
+
+        .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            background-color: #4C60E6;
+        }
+
+        .btn-link {
+            color: #4C60E6;
+        }
+    }
+}

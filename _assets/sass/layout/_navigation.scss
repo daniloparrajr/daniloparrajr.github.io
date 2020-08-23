@@ -1,0 +1,15 @@
+.page-link {
+    text-transform: uppercase;
+    margin-right: 2rem;
+    font-weight: 700;
+    &--active {
+        color: $color__primary;
+    }
+}
+
+.site-nav {
+    .page-link:last-child {
+        margin-right: 0;
+    }
+}
+
