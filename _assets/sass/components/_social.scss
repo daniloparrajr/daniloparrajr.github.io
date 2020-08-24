@@ -1,0 +1,28 @@
+.social-media-list {
+    display: flex;
+    list-style: none;
+    margin: 1em 0;
+    padding: 0;
+    justify-content: center;
+    &__item {
+        margin-right: 1em;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+    &__link {
+        height: 2.1875rem;
+        width: 2.1875rem;
+        border-radius: 2em;
+        background-color: $color__text;
+        color: #fff;
+        transition: all 300ms ease-in-out;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            background-color: $color__primary;
+        }
+    }
+}
