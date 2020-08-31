@@ -3,8 +3,6 @@ import Swiper, { Pagination, Lazy } from 'swiper';
 // configure Swiper to use modules
 Swiper.use([Pagination, Lazy]);
 
-console.log('hey');
-
 // init Swiper:
 const mySwiper = new Swiper('.swiper-container', {
   lazy: true,
