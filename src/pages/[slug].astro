@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const { title, description, date, tags } = post.data;
-const ogImage = `${SITE.website}/og-images/${post.slug}`;
+const ogImage = `${SITE.website}/og-images/${post.slug}.png`;
 
 const { Content } = await post.render();
 ---
