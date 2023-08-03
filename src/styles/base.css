@@ -40,12 +40,12 @@
 
 @layer components {
   .badge {
-    @apply text-zinc-600 dark:text-zinc-400 font-mono text-xs uppercase relative z-20 border border-zinc-200 dark:border-zinc-700/40 py-0.5 px-1 hover:border-indigo-600 hover:dark:border-indigo-600 hover:dark:text-indigo-600;
+    @apply text-zinc-600 dark:text-zinc-400 font-mono text-xs uppercase relative z-20 border border-zinc-200 dark:border-zinc-700/40 sm:p-1 p-1.5  hover:border-indigo-600 hover:dark:border-indigo-600 hover:dark:text-indigo-600;
   }
 }
 
 .modal .pagefind-ui__result-tag {
-  @apply font-mono border border-zinc-200 uppercase dark:border-zinc-700/40 py-0.5 px-1 hover:border-indigo-600 hover:dark:border-indigo-600 hover:dark:text-indigo-600;
+  @apply font-mono border border-zinc-200 uppercase dark:border-zinc-700/40 py-0.5 p-1 hover:border-indigo-600 hover:dark:border-indigo-600 hover:dark:text-indigo-600;
 }
 
 .modal .pagefind-ui__results-area > .pagefind-ui__message {

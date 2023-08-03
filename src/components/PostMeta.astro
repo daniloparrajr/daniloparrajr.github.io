@@ -2,10 +2,10 @@
 // util imports
 import { formatDate, calcReadingTime } from "../js/utils";
 
-const { date, content, fontSize = "text-xs" } = Astro.props;
+const { date, content, fontSize = "text-xs", classes } = Astro.props;
 ---
 
-<ul class:list={[`flex gap-2 mt-7 font-mono`, fontSize]}>
+<ul class:list={[`flex gap-2 font-mono`, fontSize, classes]}>
   <li data-pagefind-meta="date" class="after:content-['_•']">
     {formatDate(date)}
   </li>

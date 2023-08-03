@@ -17,21 +17,21 @@ const { title, date, description, tags } = data;
 ---
 
 <article
-  class="py-7 border-b overflow-hidden border-zinc-200 dark:border-zinc-700/40 relative flex justify-between gap-5 sm:gap-7 group/post transition hover:translate-x-1"
+  class="py-10 border-b overflow-hidden border-zinc-200 dark:border-zinc-700/40 relative flex justify-between gap-5 flex-col sm:flex-row sm:gap-7 group/post transition hover:translate-x-1"
 >
   <div class="flex-1">
     <TagList {tags} />
 
-    <TitleTag class="text-lg font-semibold text-zinc-800 mb-2">
+    <TitleTag class="font-semibold text-zinc-800 mb-2 mt-8 text-xl">
       <a href={url} rel="prefetch-intent">
         <span class="absolute -inset-x-4 -inset-y-6 z-10"></span>
         {title}
       </a>
     </TitleTag>
 
-    <p class="text-sm">{description}</p>
+    <p>{description}</p>
 
-    <PostMeta {content} {date} />
+    <PostMeta {content} {date} classes="mt-8" />
   </div>
 
   <div class="flex items-center">

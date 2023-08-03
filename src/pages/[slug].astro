@@ -35,11 +35,16 @@ const { Content } = await post.render();
 <MainLayout {title} {description} {ogImage} type="article">
   <article data-pagefind-body>
     <header class="mb-10">
-      <TagList tags={tags} />
+      <TagList classes="mb-8 sm:mb-10" {tags} />
 
-      <h1 class="text-3xl sm:text-4xl font-bold mb-2">{title}</h1>
+      <h1 class="text-3xl sm:text-4xl font-bold">{title}</h1>
 
-      <PostMeta content={post.body} {date} fontSize="text-sm" />
+      <PostMeta
+        classes="mt-8 sm:mb-10"
+        content={post.body}
+        {date}
+        fontSize="text-sm"
+      />
     </header>
 
     <div class="prose dark:prose-invert">

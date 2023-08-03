@@ -2,10 +2,10 @@
 // utils imports
 import { slugify } from "../js/utils";
 
-const { tags } = Astro.props;
+const { tags, classes } = Astro.props;
 ---
 
-<ul class="mb-5 flex gap-3 leading-none">
+<ul class:list={["flex gap-3 leading-none", classes]}>
   {
     tags.map((tag) => (
       <li>
