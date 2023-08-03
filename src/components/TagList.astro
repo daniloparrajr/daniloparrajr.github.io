@@ -1,0 +1,18 @@
+---
+// utils imports
+import { slugify } from "../js/utils";
+
+const { tags } = Astro.props;
+---
+
+<ul class="mb-5 flex gap-3 leading-none">
+  {
+    tags.map((tag) => (
+      <li>
+        <a href={`/tag/${slugify(tag)}/`} class="badge" rel="prefetch-intent">
+          {tag}
+        </a>
+      </li>
+    ))
+  }
+</ul>

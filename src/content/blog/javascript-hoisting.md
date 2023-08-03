@@ -1,0 +1,62 @@
+---
+title: JavaScript Hoisting
+description: JavaScript hoisting refers to the interpreter moving the declarations of variables, functions, and classes to the top  of their scope before execution.
+date: 2022-07-09
+tags: ["JavaScript"]
+---
+
+JavaScript hoisting refers to the interpreter moving the declarations of variables, functions, and classes to the top of their scope before execution.
+
+Some may find hoisting beneficial, but it may produce unexpected errors, and is generally not recommended.
+
+## Function hoisting
+
+Hoisting allows functions to be safely used in code before they are declared.
+
+```javascript
+sayHello();
+
+function sayHello() {
+  console.log("Hello there!");
+}
+```
+
+## Variable hoisting
+
+Variables are also hoisted, so you can use variables before their declaration.
+
+However, JavaScript only hoist declarations and **not initializations**. This means that variables declared using `var` will have the hoisted value of `undefined` otherwise uninitialized.
+
+### `var` hoisting
+
+```javascript
+console.log(num); // undefined
+var num;
+num = 2;
+console.log(num); // will log 2
+```
+
+The same behavior happens when the declaration and initialization happens in one line.
+
+```javascript
+console.log(num); // undefined
+var num = 2;
+console.log(num); // will log 2
+```
+
+### `let` and `const` hoisting
+
+Variables declared using `let` and `const` are also hoisted but doesn't have a default value of `undefined` and will throw an exception if read before its initialization.
+
+```javascript
+console.log(num); // Uncaught ReferenceError: num is not defined
+let num = 2;
+```
+
+## `class` hoisting
+
+Classes defined using a class declaration are hoisted, which means that JavaScript has a reference to the class. However the class is not initialized by default, so any code that uses it before the line in which it is initialized is executed will throw a ReferenceError.
+
+## Function and class hoisting
+
+function expression and class expression is not hoisted.

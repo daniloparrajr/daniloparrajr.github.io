@@ -1,0 +1,22 @@
+---
+// Components imports
+import PostItem from "./PostItem.astro";
+
+const { posts } = Astro.props;
+---
+
+<div
+  class="[&>*:first-child]:border-t [&>*:first-child]:border-zinc-200 [&>*:first-child]:dark:border-zinc-700/40"
+>
+  {
+    posts.map((post) => (
+      <PostItem
+        data={post.data}
+        content={post.body}
+        url={`/${post.slug}`}
+        tagType="h3"
+        class=""
+      />
+    ))
+  }
+</div>

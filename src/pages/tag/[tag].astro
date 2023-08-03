@@ -1,0 +1,42 @@
+---
+import { getCollection, CollectionEntry } from "astro:content";
+
+// component imports
+import MainLayout from "@layouts/MainLayout.astro";
+import PostList from "@components/PostList.astro";
+
+// utils
+import { slugify, formatBlogPosts } from "../../js/utils";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("blog");
+  const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
+  const allTags = [
+    ...new Set(formattedPosts.map((tag) => tag.data.tags).flat()),
+  ];
+
+  return allTags.map((tag) => ({
+    params: { tag: slugify(tag) },
+    props: { name: tag },
+  }));
+}
+
+const { tag } = Astro.params;
+const { name } = Astro.props;
+
+const allPosts = await getCollection("blog");
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
+const tagPosts = formattedPosts.filter((post) => {
+  return post.data.tags.every((postTag) => slugify(postTag) === tag);
+});
+---
+
+<MainLayout title={name}>
+  <section aria-label={`${name} Archive`}>
+    <h1 class="text-2xl mb-10 sm:text-4xl sm:mb-20">
+      Tagged <span>"{name}"</span>
+    </h1>
+
+    <PostList posts={tagPosts} />
+  </section>
+</MainLayout>

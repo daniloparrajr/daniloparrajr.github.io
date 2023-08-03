@@ -1,0 +1,49 @@
+---
+// component imports
+import Link from "./Link.astro";
+
+const { prevUrl, nextUrl, currentPage, lastPage } = Astro.props;
+---
+
+<nav
+  class="flex justify-between mt-20 items-center text-sm sm:text-base"
+  aria-label="Blog pages"
+>
+  <div class="w-1/3 flex items-center">
+    {
+      prevUrl && (
+        <Link
+          text="Previous"
+          href={prevUrl}
+          style="primary"
+          isFilled={false}
+          icon={{
+            name: "pixelarticons:arrow-left",
+            side: "left",
+          }}
+        />
+      )
+    }
+  </div>
+
+  <div class="w-1/3 text-center">
+    Page {currentPage} of {lastPage}
+  </div>
+
+  <div class="w-1/3 flex items-center justify-end">
+    {
+      nextUrl && (
+        <Link
+          text="Next"
+          href={nextUrl}
+          style="primary"
+          isFilled={false}
+          icon={{
+            name: "pixelarticons:arrow-right",
+            side: "right",
+          }}
+        />
+      )
+    }
+  </div>
+</nav>

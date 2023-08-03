@@ -1,0 +1,96 @@
+---
+import { SITE } from "@config";
+let {
+  title,
+  description = SITE.description,
+  type = "website",
+  ogImage,
+} = Astro.props;
+
+// TODO: check for better "empty" checking
+if (!title) {
+  title = SITE.title;
+} else {
+  title = `${title} - ${SITE.author}`;
+}
+---
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <title>{title}</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <!-- OpenGraph Tags -->
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  {
+    ogImage ? (
+      <>
+        <meta name="og:image" content={ogImage} />
+        <meta name="og:image:alt" content={title} />
+      </>
+    ) : (
+      ""
+    )
+  }
+
+  <!-- Twitter Tags -->
+  <meta name="twitter:site" content="@daniloparrajr" />
+  <meta name="twitter:creator" content="@daniloparrajr" />
+  <meta name="description" content={description} />
+  <meta name="twitter:description" content={description} />
+  {
+    ogImage ? (
+      <>
+        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image:alt" content={title} />
+      </>
+    ) : (
+      ""
+    )
+  }
+  <script is:inline>
+    const theme = (() => {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme");
+      }
+
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+
+      return "light";
+    })();
+
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
+
+    window.localStorage.setItem("theme", theme);
+  </script>
+
+  {
+    import.meta.env.PROD ? (
+      <>
+        <link href="/_pagefind/pagefind-ui.css" rel="stylesheet" />
+        <script src="/_pagefind/pagefind-ui.js" type="text/javascript" />
+      </>
+    ) : (
+      ""
+    )
+  }
+</head>

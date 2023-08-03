@@ -1,0 +1,13 @@
+---
+// util imports
+import { formatDate, calcReadingTime } from "../js/utils";
+
+const { date, content, fontSize = "text-xs" } = Astro.props;
+---
+
+<ul class:list={[`flex gap-2 mt-7 font-mono`, fontSize]}>
+  <li data-pagefind-meta="date" class="after:content-['_•']">
+    {formatDate(date)}
+  </li>
+  <li>{calcReadingTime(content)} min read</li>
+</ul>

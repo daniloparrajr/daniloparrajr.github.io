@@ -1,0 +1,30 @@
+---
+import { getCollection, CollectionEntry } from "astro:content";
+import { formatBlogPosts, slugify } from "../js/utils";
+
+const allPosts = await getCollection("blog");
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
+const allTags = formattedPosts.map((tag) => tag.data.tags).flat();
+
+const processedTags = allTags.reduce((acc, tag) => {
+  // check if the tag exists in the acc
+  const value = acc[tag] || 0;
+
+  return {
+    ...acc,
+    [tag]: value + 1,
+  };
+}, {});
+---
+
+<ul class="flex flex-wrap gap-3">
+  {
+    Object.entries(processedTags).map(([key, val]) => (
+      <li>
+        <a class="badge" href={`/tag/${slugify(key)}/`}>
+          {`${key}(${val})`}
+        </a>
+      </li>
+    ))
+  }
+</ul>

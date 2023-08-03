@@ -1,0 +1,32 @@
+---
+import ThemeToggle from "./ThemeToggle";
+import MainNav from "./MainNav.astro";
+import { Icon } from "astro-icon";
+---
+
+<header class="flex flex-wrap items-center py-5 sm:py-7 mb-8 sm:mb-10">
+  <a
+    href="/"
+    class="font-semibold text-lg sm:text-xl text-zinc-800 dark:text-zinc-100 gap-3 group/avatar"
+  >
+    <span>@daniloparrajr</span>
+  </a>
+
+  <MainNav
+    classes="w-full order-3 sm:ml-auto sm:w-auto mt-2 sm:mt-0 sm:order-none"
+  />
+
+  <div
+    class="ml-auto order-2 sm:order-none sm:ml-6 gap-3 sm:gap-5 flex items-center"
+  >
+    <button
+      class="hover:text-indigo-600 focus:text-indigo-600"
+      data-micromodal-trigger="searchModal"
+    >
+      <span class="sr-only">Search articles</span>
+      <Icon name="pixelarticons:search" class="w-7" />
+    </button>
+
+    <ThemeToggle client:load />
+  </div>
+</header>

@@ -1,0 +1,129 @@
+---
+import { Icon } from "astro-icon";
+
+const { title, id } = Astro.props;
+---
+
+<div id={id} class={`relative z-50 modal group/${id}`} aria-hidden="true">
+  <div
+    class="modal__overlay fixed inset-0 bg-black/80 dark:bg-zinc-100/80"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div
+    class="fixed inset-0 overflow-y-auto"
+    tabindex="-1"
+    data-micromodal-close
+  >
+    <div class="flex min-h-full items-start justify-center p-4 pt-16">
+      <div
+        class="modal__container mx-auto w-full max-w-[37.5rem] rounded text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-900 p-6 relative"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`${id}-title`}
+      >
+        <button
+          class="absolute top-3 right-3 z-10"
+          aria-label="Close modal"
+          data-micromodal-close
+        >
+          <span class="sr-only">Close modal</span>
+          <Icon
+            name="pixelarticons:close"
+            class="w-8 hover:text-indigo-600 transition-colors"
+          />
+        </button>
+        <h2 id={`${id}-title`} class="text-xl mb-3">{title}</h2>
+        <div id={`${id}-content`}>
+          <slot />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import MicroModal from "micromodal";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    MicroModal.init({
+      disableScroll: true,
+      awaitOpenAnimation: true,
+      awaitCloseAnimation: true,
+    });
+  });
+</script>
+
+<style is:global>
+  @keyframes mmfadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes mmfadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes mmslideIn {
+    from {
+      transform: translateY(15%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes mmslideOut {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-10%);
+      opacity: 0;
+    }
+  }
+
+  .modal {
+    display: none;
+  }
+
+  .modal.is-open {
+    display: block;
+  }
+
+  .pagefind-ui__result-thumb {
+    display: none !important;
+  }
+
+  .modal[aria-hidden="false"] .modal__overlay {
+    animation: mmfadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .modal[aria-hidden="false"] .modal__container {
+    animation: mmslideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .modal[aria-hidden="true"] .modal__overlay {
+    animation: mmfadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .modal[aria-hidden="true"] .modal__container {
+    animation: mmslideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  .modal .modal__container,
+  .modal .modal__overlay {
+    will-change: transform;
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+import { Icon } from "astro-icon";
+import MainNav from "./MainNav.astro";
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer
+  class="flex flex-col sm:items-center text-center sm:text-left sm:flex-row justify-between items-center mt-auto text-base pb-7 pt-12"
+>
+  <p class="text-zinc-400 dark:text-zinc-500 text-sm order-2 sm:order-1">
+    © {currentYear} Danilo Parra Jr. All rights reserved.
+  </p>
+
+  <div class="flex items-center mb-5 sm:mb-0 order-1 gap-3 sm:gap-5">
+    <MainNav />
+    <a href="/rss.xml"
+      ><span class="sr-only">RSS feed</span><Icon
+        name="ri:rss-line"
+        class="w-5"
+      /></a
+    >
+  </div>
+</footer>

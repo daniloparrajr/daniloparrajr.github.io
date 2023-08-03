@@ -1,0 +1,43 @@
+---
+// Icons
+import { Icon } from "astro-icon";
+
+// component imports
+import TagList from "./TagList.astro";
+import PostMeta from "./PostMeta.astro";
+
+// util imports
+import { formatDate, calcReadingTime } from "../js/utils";
+
+const { data, content, url, tagType } = Astro.props;
+
+const TitleTag = tagType;
+
+const { title, date, description, tags } = data;
+---
+
+<article
+  class="py-7 border-b overflow-hidden border-zinc-200 dark:border-zinc-700/40 relative flex justify-between gap-5 sm:gap-7 group/post transition hover:translate-x-1"
+>
+  <div class="flex-1">
+    <TagList {tags} />
+
+    <TitleTag class="text-lg font-semibold text-zinc-800 mb-2">
+      <a href={url} rel="prefetch-intent">
+        <span class="absolute -inset-x-4 -inset-y-6 z-10"></span>
+        {title}
+      </a>
+    </TitleTag>
+
+    <p class="text-sm">{description}</p>
+
+    <PostMeta {content} {date} />
+  </div>
+
+  <div class="flex items-center">
+    <Icon
+      name="pixelarticons:arrow-right"
+      class="fill-zinc-300 -rotate-45 flex-none w-8 sm:w-10 group-hover/post:text-indigo-600 group-hover/post:w-11 group-focus/post:text-indigo-600 transition"
+    />
+  </div>
+</article>

@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-zinc-600 dark:text-zinc-400 bg-white dark:bg-zinc-900;
+    --pagefind-ui-font: theme(fontFamily.sans);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 0;
+    --pagefind-ui-primary: theme(colors.indigo.600);
+    --pagefind-ui-text: theme(colors.zinc.600);
+  }
+
+  .dark body {
+    --pagefind-ui-primary: theme(colors.indigo.600);
+    --pagefind-ui-text: theme(colors.zinc.400);
+    --pagefind-ui-background: theme(colors.zinc.700);
+    --pagefind-ui-border: theme(colors.zinc.600);
+    --pagefind-ui-tag: theme(colors.zinc.900);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold text-zinc-800 dark:text-zinc-100;
+  }
+
+  a {
+    @apply hover:text-indigo-600 focus:text-indigo-600 hover:dark:text-indigo-600 focus:dark:text-indigo-600 transition-colors;
+  }
+
+  mark {
+    @apply bg-indigo-600 text-white;
+  }
+}
+
+@layer components {
+  .badge {
+    @apply text-zinc-600 dark:text-zinc-400 font-mono text-xs uppercase relative z-20 border border-zinc-200 dark:border-zinc-700/40 py-0.5 px-1 hover:border-indigo-600 hover:dark:border-indigo-600 hover:dark:text-indigo-600;
+  }
+}
+
+.modal .pagefind-ui__result-tag {
+  @apply font-mono border border-zinc-200 uppercase dark:border-zinc-700/40 py-0.5 px-1 hover:border-indigo-600 hover:dark:border-indigo-600 hover:dark:text-indigo-600;
+}
+
+.modal .pagefind-ui__results-area > .pagefind-ui__message {
+  @apply font-mono uppercase;
+}

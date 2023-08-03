@@ -1,0 +1,18 @@
+---
+import Modal from "./Modal.astro";
+---
+
+<Modal id="searchModal" title="Search articles">
+  <div id="search"></div>
+  {
+    import.meta.env.PROD ? <script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+      new PagefindUI({
+        element: "#search",
+        showImages: false,
+        resetStyles: false,
+      });
+    });
+  </script> : ''
+  }
+</Modal>

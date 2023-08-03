@@ -1,0 +1,42 @@
+---
+// Icons
+import { Icon } from "astro-icon";
+
+const { classes } = Astro.props;
+
+const socials = [
+  {
+    icon: "entypo-social:github",
+    name: "Github",
+    link: "https://github.com/daniloparrajr",
+  },
+  {
+    icon: "entypo-social:linkedin",
+    name: "LinkedIn",
+    link: "https://www.linkedin.com/in/daniloparrajr",
+  },
+  {
+    icon: "entypo-social:twitter",
+    name: "Twitter",
+    link: "https://twitter.com/daniloparrajr",
+  },
+];
+---
+
+<ul class={`flex items-center gap-6 ${classes}`}>
+  {
+    socials.map((social) => (
+      <li>
+        <a
+          target="_blank"
+          rel="noopener nofollow"
+          class="text-zinc-500"
+          href={social.link}
+        >
+          <span class="sr-only">{social.name}</span>
+          <Icon name={social.icon} class="w-5 fill-current" />
+        </a>
+      </li>
+    ))
+  }
+</ul>

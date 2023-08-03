@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+
+// component imports
+import MainLayout from "@layouts/MainLayout.astro";
+import PostList from "@components/PostList.astro";
+import SocialMenu from "@components/SocialMenu.astro";
+
+// utils imports
+import { formatBlogPosts } from "../js/utils";
+
+const allPosts = await getCollection("blog");
+const recentPosts = formatBlogPosts(allPosts, {
+  limit: 3,
+});
+---
+
+<MainLayout>
+  <section aria-label="New Blog Posts">
+    <img
+      class="block mb-5"
+      src="/avatar.png"
+      alt="Danilo's avatar"
+      width="65"
+      height="65"
+    />
+
+    <h1 class="text-3xl sm:text-4xl sm:leading-tight mb-5">
+      Web developer, forever student, and a fitness enthusiast.
+    </h1>
+
+    <p class="mb-6">
+      Hi, I'm Danilo! Welcome to my personal space in the internet, where I
+      write my learning and thoughts about all things web development.
+    </p>
+
+    <SocialMenu classes="mb-16 sm:mb-20" />
+
+    <section>
+      <h2 class="mb-3 text-2xl">Recent Articles</h2>
+      <PostList posts={recentPosts} />
+    </section>
+  </section>
+</MainLayout>
