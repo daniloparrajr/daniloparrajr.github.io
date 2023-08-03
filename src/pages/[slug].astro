@@ -1,4 +1,6 @@
 ---
+import { SITE } from "@config";
+
 // Astro imports
 import { getCollection } from "astro:content";
 
@@ -27,7 +29,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 
 const { title, description, date, tags } = post.data;
-const ogImage = `/og-images/${post.slug}`;
+const ogImage = `${SITE.website}/og-images/${post.slug}`;
 
 const { Content } = await post.render();
 ---
