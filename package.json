@@ -39,5 +39,8 @@
     "rehype-slug": "^5.1.0",
     "satori": "^0.10.1",
     "satori-html": "^0.3.2"
+  },
+  "optionalDependencies": {
+    "@resvg/resvg-js-linux-x64-gnu": "^2.4.1"
   }
 }
