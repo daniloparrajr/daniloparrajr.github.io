@@ -22,7 +22,7 @@ export function formatBlogPosts(
     filterOutFuturePosts = true,
     sortByDate = true,
     limit = undefined,
-  } = {}
+  } = {},
 ) {
   const filteredPosts = posts.reduce((acc, post) => {
     const { date, draft } = post.data;

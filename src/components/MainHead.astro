@@ -52,23 +52,18 @@ if (!title) {
   }
 
   <!-- Twitter Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:site" content={SITE.handle} />
   <meta name="twitter:creator" content={SITE.handle} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:label1" content="Written by" />
   <meta name="twitter:data1" content={SITE.author} />
-  {
-    ogImage ? (
-      <>
-        <meta name="twitter:image" content={ogImage} />
-        <meta name="twitter:image:alt" content={title} />
-        <meta name="twitter:card" content="summary_large_image" />
-      </>
-    ) : (
-      ""
-    )
-  }
+  <!-- Google Tag -->
+  <meta
+    name="google-site-verification"
+    content="AWAQN0D42VBOSfdt6F4O0BxRqktQaoFcc_gSPWB7Mvk"
+  />
   <script is:inline>
     const theme = (() => {
       if (

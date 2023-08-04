@@ -28,7 +28,7 @@ export default function ThemeToggle({ classes }) {
 
   return (
     <button
-      className={`hover:text-indigo-600 focus:text-indigo-600 transition-colors ${classes}`}
+      className={`transition-colors hover:text-indigo-600 focus:text-indigo-600 ${classes}`}
       onClick={handleClick}
     >
       {theme === "light" ? (

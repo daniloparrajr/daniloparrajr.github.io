@@ -8,7 +8,7 @@ const blog = defineCollection({
       .string()
       .max(
         160,
-        "For best SEO results, please keep the description under 160 characters."
+        "For best SEO results, please keep the description under 160 characters.",
       ),
     draft: z.boolean().default(false),
     ogImage: z.string().optional(),
