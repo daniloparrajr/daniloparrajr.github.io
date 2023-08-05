@@ -10,6 +10,9 @@ import { readFileSync } from "node:fs";
 // https://astro.build/config
 export default defineConfig({
   site: "https://daniloparrajr.com",
+  experimental: {
+    assets: true,
+  },
   compressHTML: true,
   markdown: {
     rehypePlugins: [rehypeHeadingIds, rehypeAutolinkHeadings],

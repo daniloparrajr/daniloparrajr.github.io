@@ -9,11 +9,11 @@ import Pagination from "@components/Pagination.astro";
 import TagCloud from "@components/TagCloud.astro";
 
 // utils imports
-import { formatBlogPosts } from "../../js/utils";
+import { filterPosts } from "../../js/utils";
 
 export async function getStaticPaths({ paginate }) {
   const allPosts = await getCollection("blog");
-  const formattedPosts = formatBlogPosts(allPosts);
+  const formattedPosts = filterPosts(allPosts);
 
   return paginate(formattedPosts, {
     pageSize: SITE.articlePerPage,
@@ -28,7 +28,7 @@ const { page } = Astro.props;
   description="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
 >
   <section aria-label="New Blog Posts">
-    <h1 class="text-3xl sm:text-4xl sm:leading-tight mb-5 sm:mb-10">
+    <h1 class="sm:leading-tight text-3xl mb-5 sm:mb-10 sm:text-4xl">
       All Articles
     </h1>
 

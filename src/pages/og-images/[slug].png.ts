@@ -6,7 +6,7 @@ import InterBold from "@fontsource/inter/files/inter-latin-700-normal.woff";
 import { getCollection } from "astro:content";
 import type { APIContext } from "astro";
 
-import { formatBlogPosts, formatDate } from "src/js/utils";
+import { filterPosts, formatDate } from "src/js/utils";
 
 const dimensions = {
   width: 1200,
@@ -77,7 +77,7 @@ export async function get(context: APIContext) {
 
 export async function getStaticPaths() {
   const blog = await getCollection("blog");
-  const posts = formatBlogPosts(blog);
+  const posts = filterPosts(blog);
 
   const paths = posts.map((post) => {
     return {

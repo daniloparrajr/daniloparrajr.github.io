@@ -15,7 +15,7 @@ export function formatDate(date) {
   });
 }
 
-export function formatBlogPosts(
+export function filterPosts(
   posts,
   {
     filterOutDrafts = true,

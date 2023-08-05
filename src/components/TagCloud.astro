@@ -1,9 +1,9 @@
 ---
 import { getCollection, CollectionEntry } from "astro:content";
-import { formatBlogPosts, slugify } from "../js/utils";
+import { filterPosts, slugify } from "../js/utils";
 
 const allPosts = await getCollection("blog");
-const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
+const formattedPosts: CollectionEntry<"blog">[] = filterPosts(allPosts);
 const allTags = formattedPosts.map((tag) => tag.data.tags).flat();
 
 const processedTags = allTags.reduce((acc, tag) => {

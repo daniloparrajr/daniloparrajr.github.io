@@ -1,10 +1,10 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { formatDate, formatBlogPosts } from "src/js/utils";
+import { formatDate, filterPosts } from "src/js/utils";
 
 export async function get(context) {
   const blog = await getCollection("blog");
-  const posts = formatBlogPosts(blog);
+  const posts = filterPosts(blog);
 
   return rss({
     stylesheet: "/rss/styles.xsl",
