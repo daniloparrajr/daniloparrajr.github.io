@@ -1,15 +1,11 @@
 ---
 import { getCollection } from "astro:content";
 
-// import assets
-import avatar100 from "../assets/images/avatar-100.png";
-import avatar200 from "../assets/images/avatar-200.png";
-import avatar300 from "../assets/images/avatar-300.png";
-
 // component imports
 import MainLayout from "@layouts/MainLayout.astro";
 import PostList from "@components/PostList.astro";
 import SocialMenu from "@components/SocialMenu.astro";
+import Avatar from "@components/Avatar.astro";
 
 // utils imports
 import { filterPosts } from "../js/utils";
@@ -22,14 +18,7 @@ const recentPosts = filterPosts(allPosts, {
 
 <MainLayout>
   <section aria-label="New Blog Posts">
-    <img
-      class="block mb-5"
-      src={avatar100.src}
-      srcset={`${avatar100.src} 100w, ${avatar200.src} 200w, ${avatar300.src} 300w`}
-      alt="Danilo's avatar"
-      width={avatar100.width}
-      height={avatar100.height}
-    />
+    <Avatar />
 
     <h1 class="text-3xl sm:text-4xl sm:leading-tight mb-5">
       Web developer, forever student, and a fitness enthusiast.

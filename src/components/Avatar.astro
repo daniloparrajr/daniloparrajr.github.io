@@ -1,0 +1,28 @@
+---
+import { Image, getImage } from "astro:assets";
+
+import avatar100 from "@assets/images/avatar-100.png";
+import avatar200 from "@assets/images/avatar-200.png";
+import avatar300 from "@assets/images/avatar-300.png";
+
+// optimized avatar images
+const optimizedAvatar100 = await getImage({
+  src: avatar100,
+});
+
+const optimizedAvatar200 = await getImage({
+  src: avatar200,
+});
+
+const optimizedAvatar300 = await getImage({
+  src: avatar300,
+});
+---
+
+<Image
+  class="block mb-5"
+  src={avatar100}
+  srcset={`${optimizedAvatar100.src} 100w, ${optimizedAvatar200.src} 200w, ${optimizedAvatar300.src} 300w`}
+  alt="Danilo's avatar"
+  loading="eager"
+/>

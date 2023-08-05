@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, sharpImageService } from "astro/config";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import tailwind from "@astrojs/tailwind";
@@ -10,10 +10,13 @@ import { readFileSync } from "node:fs";
 // https://astro.build/config
 export default defineConfig({
   site: "https://daniloparrajr.com",
+  compressHTML: true,
   experimental: {
     assets: true,
   },
-  compressHTML: true,
+  image: {
+    service: sharpImageService(),
+  },
   markdown: {
     rehypePlugins: [rehypeHeadingIds, rehypeAutolinkHeadings],
     shikiConfig: {
