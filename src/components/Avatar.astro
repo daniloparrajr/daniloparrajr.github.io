@@ -22,7 +22,7 @@ const optimizedAvatar300 = await getImage({
 <Image
   class="block mb-5"
   src={avatar100}
-  srcset={`${optimizedAvatar100.src} 100w, ${optimizedAvatar200.src} 200w, ${optimizedAvatar300.src} 300w`}
+  srcset={`${optimizedAvatar100.src}, ${optimizedAvatar200.src} 2x, ${optimizedAvatar300.src} 3x`}
   alt="Danilo's avatar"
   loading="eager"
 />
