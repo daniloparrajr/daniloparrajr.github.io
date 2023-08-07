@@ -1,34 +1,23 @@
 ---
+import { MENU_LINKS } from "@config";
+import Link from "./Link.astro";
+
 const { classes = "" } = Astro.props;
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1); // remove the first "/"
-
-const links = [
-  {
-    slug: "about",
-    name: "About",
-  },
-  {
-    slug: "articles",
-    name: "Articles",
-  },
-];
 ---
 
 <nav class={`flex items-center gap-3 sm:gap-5 ${classes}`}>
   {
-    links.map((link) => (
-      <a
+    MENU_LINKS.map(({ slug, name, ...rest }) => (
+      <Link
+        text={name}
+        classes={`font-medium ${currentPath === slug ? "text-indigo-600" : ""}`}
         rel="prefetch-intent"
-        class:list={[
-          "font-medium",
-          { "text-indigo-600": currentPath === link.slug },
-        ]}
-        href={`/${link.slug}`}
-      >
-        {link.name}
-      </a>
+        href={`/${slug}`}
+        {...rest}
+      />
     ))
   }
 </nav>

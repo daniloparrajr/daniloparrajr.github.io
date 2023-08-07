@@ -5,23 +5,25 @@ import { Icon } from "astro-icon";
 interface Props {
   text: string;
   href: string;
-  style: "primary" | "secondary";
+  style: "primary" | "outline";
   icon?: {
     name: string;
     side: "left" | "right";
   };
-  isFilled?: boolean;
   classes?: string;
 }
 
 const { text, href, style, icon, classes, ...rest } = Astro.props as Props;
+
+const iconClasses = "inline-flex gap-1 items-center";
+const linkClasses = [classes, style];
+
+if (icon) {
+  linkClasses.push(iconClasses);
+}
 ---
 
-<a
-  href={href}
-  class:list={["inline-flex gap-1 items-center", classes, style]}
-  {...rest}
->
+<a href={href} class:list={linkClasses} {...rest}>
   {
     icon && icon.side === "left" && (
       <Icon name={icon.name} height="24" width="24" />
