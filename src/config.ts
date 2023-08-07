@@ -12,14 +12,17 @@ export const MENU_LINKS = [
   {
     slug: "about",
     name: "About",
+    rel: "prefetch-intent",
   },
   {
     slug: "articles",
     name: "Articles",
+    rel: "prefetch-intent",
   },
   {
     slug: "files/resume-daniloparrajr-2023.pdf",
     name: "Resume",
+    rel: "prefetch-intent",
     icon: {
       name: "document-outline",
       side: "left",

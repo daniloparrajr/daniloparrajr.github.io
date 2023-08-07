@@ -3,7 +3,11 @@
 import MainLayout from "@layouts/MainLayout.astro";
 ---
 
-<MainLayout title="About" description="Learn more about Danilo Parra Jr.">
+<MainLayout
+  title="About"
+  activeNav="about"
+  description="Learn more about Danilo Parra Jr."
+>
   <section aria-label="About">
     <h1 class="text-3xl sm:text-4xl mb-5">About</h1>
 
@@ -45,7 +49,8 @@ import MainLayout from "@layouts/MainLayout.astro";
         <li>
           Built on <a href="https://astro.build/" target="_blank" rel="nofollow"
             >Astro</a
-          > - an all-in-one web framework for building fast, content-focused websites.
+          > - an all-in-one web framework for building fast, content-focused
+          websites.
         </li>
         <li>
           Styled using <a

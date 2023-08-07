@@ -2,6 +2,8 @@
 import ThemeToggle from "./ThemeToggle";
 import MainNav from "./MainNav.astro";
 import { Icon } from "astro-icon";
+
+const { activeNav } = Astro.props;
 ---
 
 <header class="flex flex-wrap items-center py-5 sm:py-7 mb-8 sm:mb-10">
@@ -13,6 +15,7 @@ import { Icon } from "astro-icon";
   </a>
 
   <MainNav
+    {activeNav}
     classes="w-full order-3 sm:ml-auto sm:w-auto mt-2 sm:mt-0 sm:order-none"
   />
 
