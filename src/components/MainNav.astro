@@ -2,15 +2,15 @@
 import { MENU_LINKS } from "@config";
 import Link from "./Link.astro";
 
-const { activeNav, classes = "" } = Astro.props;
+const { activeNav, classes = "", ...rest } = Astro.props;
 ---
 
-<nav class={`flex items-center gap-3 sm:gap-5 ${classes}`}>
+<nav {...rest} class={`flex items-center gap-3 sm:gap-5 ${classes}`}>
   {
     MENU_LINKS.map(({ slug, name, ...rest }) => (
       <Link
         text={name}
-        classes={`font-medium ${activeNav === slug ? "text-indigo-600" : ""}`}
+        classes={`font-medium ${activeNav === slug ? "active" : ""}`}
         href={`/${slug}`}
         {...rest}
       />

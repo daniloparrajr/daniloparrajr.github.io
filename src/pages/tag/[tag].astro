@@ -31,7 +31,7 @@ const tagPosts = formattedPosts.filter((post) => {
 });
 ---
 
-<MainLayout title={name}>
+<MainLayout title={name} name={slugify(name)}>
   <section aria-label={`${name} Archive`}>
     <h1 class="text-2xl mb-10 sm:text-4xl sm:mb-20">
       Tagged <span>"{name}"</span>

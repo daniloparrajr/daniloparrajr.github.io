@@ -12,7 +12,7 @@ import TagList from "@components/TagList.astro";
 import PostMeta from "@components/PostMeta.astro";
 
 // Utils imports
-import { filterPosts } from "../js/utils";
+import { filterPosts, slugify } from "../js/utils";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
@@ -34,7 +34,13 @@ const ogImage = `${SITE.website}/og-images/${post.slug}.png`;
 const { Content } = await post.render();
 ---
 
-<MainLayout {title} {description} {ogImage} type="article">
+<MainLayout
+  {title}
+  {description}
+  {ogImage}
+  name={slugify(title)}
+  type="article"
+>
   <article data-pagefind-body>
     <header class="mb-10">
       <TagList classes="mb-8 sm:mb-10" {tags} />
