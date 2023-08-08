@@ -36,11 +36,31 @@
   mark {
     @apply bg-indigo-600 text-white;
   }
+
+  ::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-zinc-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-zinc-500;
+  }
+
+  @supports (scrollbar-color: red blue) {
+    * {
+      scrollbar-color: theme(colors.zinc.400) theme(colors.zinc.200);
+      scrollbar-width: thin;
+    }
+  }
 }
 
 @layer components {
   .badge {
-    @apply relative z-20 border border-zinc-300 p-1.5 font-mono text-sm uppercase text-zinc-600 hover:border-indigo-600 dark:border-zinc-700/40 dark:text-zinc-400  hover:dark:border-indigo-600 hover:dark:text-indigo-600 sm:p-1 sm:text-xs;
+    @apply relative z-20 block border border-zinc-300 p-1.5 font-mono text-sm uppercase text-zinc-600 hover:border-indigo-600 dark:border-zinc-700/40 dark:text-zinc-400  hover:dark:border-indigo-600 hover:dark:text-indigo-600 sm:p-1 sm:text-xs;
   }
 }
 
