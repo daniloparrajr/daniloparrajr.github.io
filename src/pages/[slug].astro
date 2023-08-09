@@ -34,13 +34,7 @@ const ogImage = `${SITE.website}/og-images/${post.slug}.png`;
 const { Content } = await post.render();
 ---
 
-<MainLayout
-  {title}
-  {description}
-  {ogImage}
-  name={slugify(title)}
-  type="article"
->
+<MainLayout {title} {description} {ogImage} name="article" type="article">
   <article data-pagefind-body>
     <header class="mb-10">
       <TagList classes="mb-8 sm:mb-10" {tags} />
@@ -55,7 +49,7 @@ const { Content } = await post.render();
       />
     </header>
 
-    <div class="prose dark:prose-invert">
+    <div id="content" class="prose dark:prose-invert">
       <Content />
     </div>
   </article>

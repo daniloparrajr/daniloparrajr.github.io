@@ -1,31 +1,24 @@
 import barba from "@barba/core";
 
-const removeActiveMenuItem = (nav) => {
-  const menuItems = nav.querySelectorAll("a");
-  menuItems.forEach((menuItem) => {
-    menuItem.classList.remove("active");
-  });
-};
+import { updateActiveMenuItem } from "../utils/menu.ts";
+import { fadeInPostContents } from "../utils/animations.ts";
 
-const setActiveMenuItem = (nav, namespace) => {
-  const menuItems = nav.querySelectorAll("a");
-  menuItems.forEach((menuItem) => {
-    if (menuItem.dataset.namespace === namespace) {
-      menuItem.classList.add("active");
-    }
-  });
-};
-
-const updateActiveMenuItem = (namespace) => {
-  const navs = document.querySelectorAll(".site-nav");
-
-  navs.forEach((nav) => {
-    removeActiveMenuItem(nav);
-    setActiveMenuItem(nav, namespace);
-  });
-};
-
-barba.init();
+barba.init({
+  transitions: [
+    {
+      name: "animate-contents",
+      once(data) {
+        fadeInPostContents(data.next.container);
+      },
+      enter(data) {
+        fadeInPostContents(data.next.container);
+      },
+      to: {
+        namespace: ["article"],
+      },
+    },
+  ],
+});
 
 barba.hooks.beforeEnter((data) => {
   updateActiveMenuItem(data.next.namespace);
