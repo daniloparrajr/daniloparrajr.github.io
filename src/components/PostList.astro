@@ -2,12 +2,12 @@
 // Components imports
 import PostItem from "./PostItem.astro";
 
-const { posts } = Astro.props;
+const { posts, classes } = Astro.props;
+const defaultClasses =
+  "[&>*:first-child]:border-t [&>*:first-child]:border-zinc-200 [&>*:first-child]:dark:border-zinc-700/40";
 ---
 
-<div
-  class="[&>*:first-child]:border-t [&>*:first-child]:border-zinc-200 [&>*:first-child]:dark:border-zinc-700/40"
->
+<div class:list={[defaultClasses, classes]}>
   {
     posts.map((post) => (
       <PostItem

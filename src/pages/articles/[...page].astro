@@ -38,7 +38,7 @@ const { page } = Astro.props;
       <TagCloud />
     </section>
 
-    <PostList posts={page.data} />
+    <PostList classes="js-animate-content" posts={page.data} />
 
     <Pagination
       lastPage={page.lastPage}

@@ -18,20 +18,21 @@ const recentPosts = filterPosts(allPosts, {
 
 <MainLayout name="index">
   <section aria-label="New Blog Posts">
-    <Avatar />
+    <div class="js-animate-content">
+      <Avatar />
 
-    <h1 class="text-3xl sm:text-4xl sm:leading-tight mb-5">
-      Web developer, forever student, and a fitness enthusiast.
-    </h1>
+      <h1 class="text-3xl sm:text-4xl sm:leading-tight mb-5">
+        Web developer, forever student, and a fitness enthusiast.
+      </h1>
 
-    <p class="mb-6">
-      Hi, I'm Danilo! Welcome to my personal space in the internet, where I
-      write my learning and thoughts about all things web development.
-    </p>
+      <p class="mb-6">
+        Hi, I'm Danilo! Welcome to my personal space in the internet, where I
+        write my learning and thoughts about all things web development.
+      </p>
 
-    <SocialMenu classes="mb-16 sm:mb-20" />
-
-    <section>
+      <SocialMenu classes="mb-16 sm:mb-20" />
+    </div>
+    <section class="js-animate-content">
       <h2 class="mb-5 sm:mb-8 text-2xl">Recent Articles</h2>
       <PostList posts={recentPosts} />
     </section>
