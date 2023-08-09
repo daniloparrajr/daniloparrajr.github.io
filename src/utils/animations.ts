@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 export const fadeInContent = (container) => {
   const contents = container.querySelectorAll(".js-animate-content");
   const timeline = gsap.timeline();
+
   contents.forEach((content) => {
     if (content.children) {
       timeline.add(
@@ -12,11 +13,12 @@ export const fadeInContent = (container) => {
           {
             opacity: 1,
             y: 0,
-            duration: 0.6,
+            duration: 0.5,
             stagger: {
               each: 0.1,
             },
           },
+          "-=2",
         ),
       );
     }
