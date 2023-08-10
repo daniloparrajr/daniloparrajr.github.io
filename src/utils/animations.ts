@@ -6,21 +6,20 @@ export const fadeInContent = (container) => {
 
   contents.forEach((content) => {
     if (content.children) {
-      timeline.add(
-        gsap.fromTo(
-          content.children,
-          { y: -20, opacity: 0 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            stagger: {
-              each: 0.1,
-            },
-          },
-          "-=2",
-        ),
-      );
+      timeline.set(content.children, { y: -20, opacity: 0 });
+    }
+  });
+
+  contents.forEach((content) => {
+    if (content.children) {
+      timeline.to(content.children, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: {
+          each: 0.1,
+        },
+      });
     }
   });
 };
