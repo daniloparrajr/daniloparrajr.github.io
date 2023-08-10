@@ -8,7 +8,7 @@ import SocialMenu from "@components/SocialMenu.astro";
 import Avatar from "@components/Avatar.astro";
 
 // utils imports
-import { filterPosts } from "../js/utils";
+import { filterPosts } from "@utils/posts";
 
 const allPosts = await getCollection("blog");
 const recentPosts = filterPosts(allPosts, {

@@ -1,7 +1,7 @@
 import barba from "@barba/core";
 
-import { updateActiveMenuItem } from "../utils/menu.ts";
-import { fadeInContent } from "../utils/animations.ts";
+import { updateActiveMenuItem } from "@utils/menu.ts";
+import { fadeInContent } from "@utils/animations.ts";
 
 barba.init({
   transitions: [

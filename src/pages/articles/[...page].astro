@@ -9,7 +9,7 @@ import Pagination from "@components/Pagination.astro";
 import TagCloud from "@components/TagCloud.astro";
 
 // utils imports
-import { filterPosts } from "../../js/utils";
+import { filterPosts } from "@utils/posts";
 
 export async function getStaticPaths({ paginate }) {
   const allPosts = await getCollection("blog");

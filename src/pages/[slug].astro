@@ -12,7 +12,7 @@ import TagList from "@components/TagList.astro";
 import PostMeta from "@components/PostMeta.astro";
 
 // Utils imports
-import { filterPosts, slugify } from "../js/utils";
+import { filterPosts, slugify } from "@utils/posts";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");

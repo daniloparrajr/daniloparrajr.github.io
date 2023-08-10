@@ -1,6 +1,6 @@
 ---
 import { getCollection, CollectionEntry } from "astro:content";
-import { filterPosts, slugify } from "../js/utils";
+import { filterPosts, slugify } from "@utils/posts";
 
 const allPosts = await getCollection("blog");
 const formattedPosts: CollectionEntry<"blog">[] = filterPosts(allPosts);
