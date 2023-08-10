@@ -18,5 +18,7 @@ barba.init({
 });
 
 barba.hooks.beforeEnter((data) => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
   updateActiveMenuItem(data.next.namespace);
 });
