@@ -15,9 +15,9 @@ export const fadeInContent = (container) => {
       timeline.to(content.children, {
         opacity: 1,
         y: 0,
-        duration: 0.6,
+        duration: 0.8,
         stagger: {
-          each: 0.1,
+          each: 0.2,
         },
       });
     }
