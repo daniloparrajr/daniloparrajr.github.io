@@ -16,6 +16,7 @@
     "maintained node versions"
   ],
   "dependencies": {
+    "@astrojs/mdx": "^0.19.7",
     "@barba/core": "^2.9.7",
     "@fontsource-variable/inter": "^5.0.5",
     "@fontsource/ibm-plex-mono": "^5.0.5",
