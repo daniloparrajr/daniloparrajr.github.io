@@ -13,7 +13,7 @@ const blog = defineCollection({
     draft: z.boolean().default(false),
     ogImage: z.string().optional(),
     tags: z
-      .enum(["JavaScript", "Web Development", "CSS", "Git"])
+      .enum(["JavaScript", "Web Development", "CSS", "Git", "WordPress"])
       .array()
       .nonempty(),
   }),
