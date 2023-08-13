@@ -26,7 +26,7 @@
   h4,
   h5,
   h6 {
-    @apply font-semibold text-zinc-800 dark:text-zinc-100;
+    @apply relative font-semibold text-zinc-800 dark:text-zinc-100;
   }
 
   a {
