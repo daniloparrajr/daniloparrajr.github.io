@@ -5,6 +5,7 @@ let {
   description = SITE.description,
   type = "website",
   ogImage,
+  name,
 } = Astro.props;
 
 // TODO: check for better "empty" checking
@@ -95,6 +96,14 @@ if (!title) {
         <link href="/_pagefind/pagefind-ui.css" rel="stylesheet" />
         <script src="/_pagefind/pagefind-ui.js" type="text/javascript" />
       </>
+    ) : (
+      ""
+    )
+  }
+
+  {
+    name === "article" ? (
+      <link rel="stylesheet" href="/themes/prism-material-dark.css" />
     ) : (
       ""
     )

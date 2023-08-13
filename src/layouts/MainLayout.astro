@@ -15,7 +15,7 @@ const { title, description, type, ogImage, name } = Astro.props;
 ---
 
 <html lang="en-US">
-  <MainHead {title} {description} {type} {ogImage} />
+  <MainHead {title} {description} {type} {ogImage} {name} />
   <body class="font-sans" data-barba="wrapper">
     <div class="container flex flex-col min-h-screen">
       <Header activeNav={name} />
