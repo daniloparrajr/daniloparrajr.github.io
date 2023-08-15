@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 
-export const fadeInContent = (container) => {
+export const hideContents = (container) => {
   const contents = container.querySelectorAll(".js-animate-content");
   const timeline = gsap.timeline();
 
@@ -9,6 +9,11 @@ export const fadeInContent = (container) => {
       timeline.set(content.children, { y: -20, opacity: 0 });
     }
   });
+};
+
+export const fadeInContents = (container) => {
+  const contents = container.querySelectorAll(".js-animate-content");
+  const timeline = gsap.timeline();
 
   contents.forEach((content) => {
     if (content.children) {
