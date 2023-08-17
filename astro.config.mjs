@@ -2,7 +2,6 @@ import { defineConfig, sharpImageService } from "astro/config";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import tailwind from "@astrojs/tailwind";
-import prefetch from "@astrojs/prefetch";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import { readFileSync } from "node:fs";
@@ -26,10 +25,6 @@ export default defineConfig({
   integrations: [
     tailwind({
       applyBaseStyles: false,
-    }),
-    prefetch({
-      // Allow up to three links to be prefetched concurrently
-      throttle: 3,
     }),
     sitemap(),
     react(),

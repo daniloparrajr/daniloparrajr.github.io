@@ -9,7 +9,7 @@ const { tags, classes } = Astro.props;
   {
     tags.map((tag) => (
       <li>
-        <a href={`/tag/${slugify(tag)}/`} class="badge" rel="prefetch-intent">
+        <a href={`/tag/${slugify(tag)}/`} class="badge">
           {tag}
         </a>
       </li>

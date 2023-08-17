@@ -9,11 +9,15 @@ export const hideContents = (container) => {
       timeline.set(content.children, { y: -20, opacity: 0 });
     }
   });
+
+  return timeline;
 };
 
 export const fadeInContents = (container) => {
   const contents = container.querySelectorAll(".js-animate-content");
   const timeline = gsap.timeline();
+
+  timeline.delay(0.3);
 
   contents.forEach((content) => {
     if (content.children) {
@@ -27,4 +31,6 @@ export const fadeInContents = (container) => {
       });
     }
   });
+
+  return timeline;
 };

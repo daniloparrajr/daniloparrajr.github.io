@@ -75,3 +75,11 @@
 .modal .pagefind-ui__results-area > .pagefind-ui__message {
   @apply font-mono uppercase;
 }
+
+@media only screen and (min-width: 64em) {
+  .expressive-code {
+    margin-left: calc(-50rem / 2 + 100% / 2);
+    margin-right: calc(-50rem / 2 + 100% / 2);
+    max-width: 50rem;
+  }
+}
