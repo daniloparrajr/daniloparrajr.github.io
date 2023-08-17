@@ -1,0 +1,53 @@
+---
+title: How to allow iframe and script tag in WordPress KSES
+description: Learn what is WordPress KSES and how to allow iframe and script tags in post content.
+date: 2023-08-17
+tags: ["WordPress"]
+---
+
+## What is WordPress KSES?
+
+`wp_kses` is part of WordPress <a href="https://developer.wordpress.org/apis/security/sanitizing/" target="_blank" rel="nofollow">sanitizing data functions</a> where it's primary function is to filter text content and strips out disallowed HTML.
+
+> This function makes sure that only the allowed HTML element names, attribute names, attribute values, and HTML entities will occur in the given text string.
+
+By default WordPress doesn't allow iframe and script tags in the post content since this can be a potential security risk.
+But in some scenarios where it is needed WordPress allows to enable this tags using the `wp_kses_allowed_html` filter.
+
+```php title="functions.php"
+/**
+ * Filters the HTML tags that are allowed for a given context.
+ *
+ *
+ * @param array[]|string $allowed_html An array of allowed HTML elements and attributes
+ * @param string|array   $context      The context for which to retrieve tags. Allowed values are 'post',
+ *                                     'strip', 'data', 'entities', or the name of a field filter such as
+ *                                     'pre_user_description', or an array of allowed HTML elements and attributes.
+ * @return array Array of allowed HTML tags and their allowed attributes.
+ */
+function prefix_kses_post_allowed_html($allowed_html, $context) {
+
+	if ( 'post' === $context ) {
+		$allowed_html['script'] = array(
+			'src'   => true,
+			'type'  => true,
+		);
+
+		$allowed_html['iframe'] = array(
+			'src'         => true,
+			'style'       => true,
+			'class'       => true,
+			'width'       => true,
+			'height'      => true,
+			'id'          => true,
+			'frameborder' => true,
+			'scrolling'   => true,
+		);
+	}
+
+	return $allowed_html;
+}
+add_filter( 'wp_kses_allowed_html', 'prefix_kses_post_allowed_html', 10, 2 );
+```
+
+You can now also use `wp_kses_post( $string )` to filter any other string in your theme.

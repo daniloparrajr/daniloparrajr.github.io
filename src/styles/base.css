@@ -37,21 +37,21 @@
     @apply bg-indigo-600 text-white;
   }
 
-  ::-webkit-scrollbar {
+  body::-webkit-scrollbar {
     width: 0.5em;
     height: 0.5em;
   }
 
-  ::-webkit-scrollbar-track {
+  body::-webkit-scrollbar-track {
     @apply bg-zinc-200;
   }
 
-  ::-webkit-scrollbar-thumb {
+  body::-webkit-scrollbar-thumb {
     @apply rounded-full bg-zinc-500;
   }
 
   @supports (scrollbar-color: red blue) {
-    * {
+    body {
       scrollbar-color: theme(colors.zinc.400) theme(colors.zinc.200);
       scrollbar-width: thin;
     }
