@@ -11,7 +11,7 @@ barba.init({
         hideContents(data.next.container);
         fadeInContents(data.next.container);
       },
-      beforeEnter(data) {
+      afterLeave(data) {
         hideContents(data.next.container);
       },
       enter(data) {

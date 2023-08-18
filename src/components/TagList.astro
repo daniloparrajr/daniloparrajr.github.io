@@ -1,5 +1,8 @@
 ---
-// utils imports
+// component imports
+import Tag from "./Tag.astro";
+
+// util imports
 import { slugify } from "@utils/posts";
 
 const { tags, classes } = Astro.props;
@@ -9,9 +12,7 @@ const { tags, classes } = Astro.props;
   {
     tags.map((tag) => (
       <li>
-        <a href={`/tag/${slugify(tag)}/`} class="badge">
-          {tag}
-        </a>
+        <Tag slug={slugify(tag)} name={tag} />
       </li>
     ))
   }

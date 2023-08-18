@@ -2,6 +2,8 @@
 import { getCollection, CollectionEntry } from "astro:content";
 import { filterPosts, slugify } from "@utils/posts";
 
+import Tag from "./Tag.astro";
+
 const allPosts = await getCollection("blog");
 const formattedPosts: CollectionEntry<"blog">[] = filterPosts(allPosts);
 const allTags = formattedPosts.map((tag) => tag.data.tags).flat();
@@ -21,9 +23,7 @@ const processedTags = allTags.reduce((acc, tag) => {
   {
     Object.entries(processedTags).map(([key, val]) => (
       <li>
-        <a class="badge" href={`/tag/${slugify(key)}/`}>
-          {`${key}(${val})`}
-        </a>
+        <Tag slug={slugify(key)} name={`${key}(${val})`} />
       </li>
     ))
   }
