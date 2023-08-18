@@ -32,9 +32,18 @@ const { page } = Astro.props;
       All Articles
     </h1>
 
+    <Pagination
+      classes="mb-20"
+      lastPage={page.lastPage}
+      currentPage={page.currentPage}
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+    />
+
     <PostList classes="js-animate-content" posts={page.data} />
 
     <Pagination
+      classes="mt-20"
       lastPage={page.lastPage}
       currentPage={page.currentPage}
       prevUrl={page.url.prev}
