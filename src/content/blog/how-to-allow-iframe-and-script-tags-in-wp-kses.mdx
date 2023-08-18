@@ -5,6 +5,8 @@ date: 2023-08-17
 tags: ["WordPress"]
 ---
 
+import WideContent from "@components/WideContent.astro";
+
 ## What is WordPress KSES?
 
 `wp_kses` is part of WordPress <a href="https://developer.wordpress.org/apis/security/sanitizing/" target="_blank" rel="nofollow">sanitizing data functions</a> where it's primary function is to filter text content and strips out disallowed HTML.
@@ -17,6 +19,8 @@ But in some scenarios where it is needed WordPress allows to enable this tags us
 ## How to allow iframes and script tags in the post content?
 
 You can now also use `wp_kses_post( $string )` to filter any other string in your theme.
+
+<WideContent>
 
 ```php title="functions.php"
 /**
@@ -31,25 +35,28 @@ You can now also use `wp_kses_post( $string )` to filter any other string in you
  */
 function prefix_kses_post_allowed_html($allowed_html, $context) {
 
-	if ( 'post' === $context ) {
-		$allowed_html['script'] = array(
-			'src'   => true,
-			'type'  => true,
-		);
+    if ( 'post' === $context ) {
+    	$allowed_html['script'] = array(
+    		'src'   => true,
+    		'type'  => true,
+    	);
 
-		$allowed_html['iframe'] = array(
-			'src'         => true,
-			'style'       => true,
-			'class'       => true,
-			'width'       => true,
-			'height'      => true,
-			'id'          => true,
-			'frameborder' => true,
-			'scrolling'   => true,
-		);
-	}
+    	$allowed_html['iframe'] = array(
+    		'src'         => true,
+    		'style'       => true,
+    		'class'       => true,
+    		'width'       => true,
+    		'height'      => true,
+    		'id'          => true,
+    		'frameborder' => true,
+    		'scrolling'   => true,
+    	);
+    }
 
-	return $allowed_html;
+    return $allowed_html;
+
 }
 add_filter( 'wp_kses_allowed_html', 'prefix_kses_post_allowed_html', 10, 2 );
 ```
+
+</WideContent>
