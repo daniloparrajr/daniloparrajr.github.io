@@ -2,12 +2,14 @@
 // Components imports
 import PostItem from "./PostItem.astro";
 
-const { posts, classes } = Astro.props;
+const { posts, classes, title } = Astro.props;
 const defaultClasses =
-  "[&>*:first-child]:border-t [&>*:first-child]:border-zinc-200 [&>*:first-child]:dark:border-zinc-700/40";
+  "[&>article:first-of-type]:border-t [&>article:first-of-type]:border-zinc-200 [&>article:first-of-type]:dark:border-zinc-700/40";
 ---
 
-<div class:list={[defaultClasses, classes]}>
+<section class:list={[defaultClasses, classes]}>
+  {title ? <h2 class="mb-5 sm:mb-8 text-2xl">{title}</h2> : ""}
+
   {
     posts.map((post) => (
       <PostItem
@@ -19,4 +21,4 @@ const defaultClasses =
       />
     ))
   }
-</div>
+</section>

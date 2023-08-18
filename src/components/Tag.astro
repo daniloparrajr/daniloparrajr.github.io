@@ -1,9 +1,11 @@
 ---
+import { TAG_BASE_URL } from "@config";
+
 const { slug, name } = Astro.props;
 ---
 
 <a
-  href={`/tag/${slug}/`}
+  href={`${TAG_BASE_URL}${slug}/`}
   class="relative z-20 block border border-zinc-300 p-1.5 font-mono text-sm uppercase text-zinc-600 hover:border-indigo-600 dark:border-zinc-700/40 dark:text-zinc-400 hover:dark:border-indigo-600 hover:dark:text-indigo-600 sm:py-1 sm:px-2 sm:text-xs"
 >
   {name}

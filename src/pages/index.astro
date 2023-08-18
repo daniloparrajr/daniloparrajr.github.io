@@ -32,9 +32,10 @@ const recentPosts = filterPosts(allPosts, {
 
       <SocialMenu classes="mb-16 sm:mb-20" />
     </div>
-    <section class="js-animate-content">
-      <h2 class="mb-5 sm:mb-8 text-2xl">Recent Articles</h2>
-      <PostList posts={recentPosts} />
-    </section>
+    <PostList
+      title="Recent Articles"
+      classes="js-animate-content"
+      posts={recentPosts}
+    />
   </section>
 </MainLayout>

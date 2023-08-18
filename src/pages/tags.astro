@@ -1,0 +1,18 @@
+---
+// component imports
+import MainLayout from "@layouts/MainLayout.astro";
+import TagCloud from "@components/TagCloud.astro";
+---
+
+<MainLayout
+  title="Tags"
+  name="tags"
+  description="Learn more about Danilo Parra Jr."
+>
+  <section class="mb-14 js-animate-content">
+    <h2 class="sm:leading-tight text-3xl mb-5 sm:mb-10 sm:text-4xl">
+      Tag Cloud
+    </h2>
+    <TagCloud />
+  </section>
+</MainLayout>

@@ -12,13 +12,18 @@ export const MENU_LINKS = [
   {
     slug: "about",
     name: "About",
-    rel: "prefetch-intent",
     "data-namespace": "about",
   },
   {
     slug: "articles",
     name: "Articles",
-    rel: "prefetch-intent",
     "data-namespace": "articles",
   },
+  {
+    slug: "tags",
+    name: "Tags",
+    "data-namespace": "tags",
+  },
 ];
+
+export const TAG_BASE_URL = "/tags/";

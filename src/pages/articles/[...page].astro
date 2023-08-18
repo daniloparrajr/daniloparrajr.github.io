@@ -6,7 +6,6 @@ import { getCollection } from "astro:content";
 import MainLayout from "@layouts/MainLayout.astro";
 import PostList from "@components/PostList.astro";
 import Pagination from "@components/Pagination.astro";
-import TagCloud from "@components/TagCloud.astro";
 
 // utils imports
 import { filterPosts } from "@utils/posts";
@@ -32,11 +31,6 @@ const { page } = Astro.props;
     <h1 class="sm:leading-tight text-3xl mb-5 sm:mb-10 sm:text-4xl">
       All Articles
     </h1>
-
-    <section class="mb-14 js-animate-content">
-      <h2 class="mb-3 text-2xl">Tag Cloud</h2>
-      <TagCloud />
-    </section>
 
     <PostList classes="js-animate-content" posts={page.data} />
 

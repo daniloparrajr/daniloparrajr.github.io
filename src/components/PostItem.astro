@@ -20,9 +20,9 @@ const { title, date, description, tags } = data;
     <TagList {tags} />
 
     <TitleTag class="font-semibold text-zinc-800 mb-2 mt-8 text-xl">
-      <a href={url} >
-        <span class="absolute -inset-x-4 -inset-y-6 z-10"></span>
-        {title}
+      <a href={url}>
+        <span class="absolute inset-0 z-0"></span>
+        <span class="z-10">{title}</span>
       </a>
     </TitleTag>
 
