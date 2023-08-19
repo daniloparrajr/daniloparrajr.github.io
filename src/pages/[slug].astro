@@ -10,9 +10,10 @@ import MainLayout from "@layouts/MainLayout.astro";
 // Component imports
 import TagList from "@components/TagList.astro";
 import PostMeta from "@components/PostMeta.astro";
+import PostList from "@components/PostList.astro";
 
 // Utils imports
-import { filterPosts, slugify } from "@utils/posts";
+import { filterPosts } from "@utils/posts";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("blog");
@@ -32,6 +33,13 @@ const { title, description, date, tags } = post.data;
 const ogImage = `${SITE.website}/og-images/${post.slug}.png`;
 
 const { Content } = await post.render();
+
+const allArticles = await getCollection("blog");
+const relatedArticles = filterPosts(allArticles, {
+  limit: 2,
+  exclude: [post.slug],
+  tags,
+});
 ---
 
 <MainLayout {title} {description} {ogImage} name="article" type="article">
@@ -54,5 +62,17 @@ const { Content } = await post.render();
     >
       <Content />
     </div>
+
+    {
+      relatedArticles.length > 0 ? (
+        <PostList
+          title="Related Articles"
+          classes="js-animate-content mt-24"
+          posts={relatedArticles}
+        />
+      ) : (
+        ""
+      )
+    }
   </article>
 </MainLayout>

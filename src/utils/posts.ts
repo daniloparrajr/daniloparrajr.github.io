@@ -20,7 +20,8 @@ export function filterPosts(
   {
     filterOutDrafts = true,
     filterOutFuturePosts = true,
-    sortByDate = true,
+    exclude = [],
+    tags = [],
     limit = undefined,
   } = {},
 ) {
@@ -32,23 +33,24 @@ export function filterPosts(
     // filterOutFuturePosts if true
     if (filterOutFuturePosts && new Date(date) > new Date()) return acc;
 
+    if (exclude.includes(post.slug)) return acc;
+
+    if (tags.length !== 0 && !post.data.tags.some((tag) => tags.includes(tag)))
+      return acc;
+
     // add post to acc
     acc.push(post);
 
     return acc;
   }, []);
 
-  // sortByDate or randomize
-  if (sortByDate) {
-    filteredPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
-  } else {
-    filteredPosts.sort(() => Math.random() - 0.5);
-  }
+  filteredPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 
   // limit if number is passed
   if (typeof limit === "number") {
     return filteredPosts.slice(0, limit);
   }
+
   return filteredPosts;
 }
 
