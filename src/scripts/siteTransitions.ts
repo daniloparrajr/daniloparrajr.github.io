@@ -13,8 +13,8 @@ barba.init({
         DISQUS.reset({
           reload: true,
           config: function () {
-            this.page.identifier = data.next.url.path;
-            this.page.url = `${SITE.website}/${data.next.url.path}#!newthread`;
+            this.page.identifier = data.next.url.path.substring(1);
+            this.page.url = `${SITE.website}${data.next.url.path}#!newthread`;
           },
         });
       },
