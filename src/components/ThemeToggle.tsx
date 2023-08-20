@@ -8,8 +8,6 @@ export default function ThemeToggle({ classes }) {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
-  localStorage.getItem("theme");
-
   useEffect(() => {
     // Fix hydration text mismatch
     // https://nextjs.org/docs/messages/react-hydration-error#solution-1-using-useeffect-to-run-on-the-client-only
@@ -24,6 +22,10 @@ export default function ThemeToggle({ classes }) {
     }
 
     localStorage.setItem("theme", theme);
+
+    // Create and send event
+    const event = new Event("themeChanged");
+    document.dispatchEvent(event);
   }, [theme]);
 
   return (

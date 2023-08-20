@@ -1,9 +1,25 @@
 import barba from "@barba/core";
 
+import { SITE } from "@config";
+
 import { updateActiveMenuItem } from "@utils/menu.ts";
 import { fadeInContents, hideContents } from "@utils/animations.ts";
 
 barba.init({
+  views: [
+    {
+      namespace: "article",
+      afterEnter(data) {
+        DISQUS.reset({
+          reload: true,
+          config: function () {
+            this.page.identifier = data.next.url.path;
+            this.page.url = `${SITE.website}/${data.next.url.path}#!newthread`;
+          },
+        });
+      },
+    },
+  ],
   transitions: [
     {
       name: "default-transition",

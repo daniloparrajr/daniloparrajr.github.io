@@ -11,6 +11,7 @@ import MainLayout from "@layouts/MainLayout.astro";
 import TagList from "@components/TagList.astro";
 import PostMeta from "@components/PostMeta.astro";
 import PostList from "@components/PostList.astro";
+import DisqusComments from "@components/disqusComments.astro";
 
 // Utils imports
 import { filterPosts } from "@utils/posts";
@@ -62,17 +63,22 @@ const relatedArticles = filterPosts(allArticles, {
     >
       <Content />
     </div>
-
-    {
-      relatedArticles.length > 0 ? (
-        <PostList
-          title="Related Articles"
-          classes="js-animate-content mt-24"
-          posts={relatedArticles}
-        />
-      ) : (
-        ""
-      )
-    }
   </article>
+
+  <DisqusComments
+    pageUrl={`${SITE.website}/${post.slug}`}
+    pageIdentifier={post.slug}
+  />
+
+  {
+    relatedArticles.length > 0 ? (
+      <PostList
+        title="Related Articles"
+        classes="js-animate-content mt-24"
+        posts={relatedArticles}
+      />
+    ) : (
+      ""
+    )
+  }
 </MainLayout>
