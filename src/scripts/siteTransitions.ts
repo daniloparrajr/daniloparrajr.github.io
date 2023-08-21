@@ -1,22 +1,16 @@
 import barba from "@barba/core";
 
-import { SITE } from "@config";
-
-import { updateActiveMenuItem } from "@utils/menu.ts";
-import { fadeInContents, hideContents } from "@utils/animations.ts";
+import { updateActiveMenuItem } from "@utils/menu";
+import { fadeInContents, hideContents } from "@utils/animations";
+import { resetDisqus, initDisqus } from "@utils/disqus";
 
 barba.init({
   views: [
     {
       namespace: "article",
-      afterEnter(data) {
-        DISQUS.reset({
-          reload: true,
-          config: function () {
-            this.page.identifier = data.next.url.path.substring(1);
-            this.page.url = `${SITE.website}${data.next.url.path}#!newthread`;
-          },
-        });
+      beforeEnter() {
+        initDisqus();
+        resetDisqus();
       },
     },
   ],

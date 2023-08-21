@@ -65,10 +65,7 @@ const relatedArticles = filterPosts(allArticles, {
     </div>
   </article>
 
-  <DisqusComments
-    pageUrl={`${SITE.website}/${post.slug}`}
-    pageIdentifier={post.slug}
-  />
+  <DisqusComments />
 
   {
     relatedArticles.length > 0 ? (
