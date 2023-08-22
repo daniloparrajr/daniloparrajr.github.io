@@ -25,6 +25,7 @@ export const initDisqus = () => {
       s.setAttribute("data-timestamp", +new Date());
       (d.head || d.body).appendChild(s);
     })();
+
     document.documentElement.classList.add("disqus-init");
   }
 

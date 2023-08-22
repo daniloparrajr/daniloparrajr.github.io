@@ -65,17 +65,19 @@ const relatedArticles = filterPosts(allArticles, {
     </div>
   </article>
 
-  <DisqusComments />
+  <div class="js-animate-content">
+    <DisqusComments />
 
-  {
-    relatedArticles.length > 0 ? (
-      <PostList
-        title="Related Articles"
-        classes="js-animate-content mt-24"
-        posts={relatedArticles}
-      />
-    ) : (
-      ""
-    )
-  }
+    {
+      relatedArticles.length > 0 ? (
+        <PostList
+          title="Related Articles"
+          classes="js-animate-content mt-24"
+          posts={relatedArticles}
+        />
+      ) : (
+        ""
+      )
+    }
+  </div>
 </MainLayout>
