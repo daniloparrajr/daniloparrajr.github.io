@@ -10,7 +10,7 @@ const { tags, classes } = Astro.props;
 
 <ul class:list={["flex gap-3 leading-none", classes]}>
   {
-    tags.map((tag) => (
+    tags.map((tag: string) => (
       <li>
         <Tag slug={slugify(tag)} name={tag} />
       </li>

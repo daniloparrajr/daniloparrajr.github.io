@@ -6,6 +6,13 @@ import { Icon } from "astro-icon";
 import TagList from "./TagList.astro";
 import PostMeta from "./PostMeta.astro";
 
+interface Props {
+  data: object;
+  content: string;
+  url: string;
+  tagType: string;
+}
+
 const { data, content, url, tagType } = Astro.props;
 
 const TitleTag = tagType;

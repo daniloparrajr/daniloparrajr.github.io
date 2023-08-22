@@ -1,12 +1,19 @@
 ---
 import { SITE } from "@config";
+
+interface Props {
+  title: string;
+  description: string;
+  type: string;
+  ogImage: string;
+}
+
 let {
   title,
   description = SITE.description,
   type = "website",
   ogImage,
-  name,
-} = Astro.props;
+} = Astro.props as Props;
 
 // TODO: check for better "empty" checking
 if (!title) {

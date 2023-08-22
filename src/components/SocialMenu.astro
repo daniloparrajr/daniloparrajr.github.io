@@ -2,7 +2,11 @@
 // Icons
 import { Icon } from "astro-icon";
 
-const { classes } = Astro.props;
+interface Props {
+  classes?: string;
+}
+
+const { classes } = Astro.props as Props;
 
 const socials = [
   {

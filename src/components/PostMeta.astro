@@ -2,7 +2,13 @@
 // util imports
 import { formatDate, calcReadingTime } from "@utils/posts";
 
-const { date, content, classes } = Astro.props;
+interface Props {
+  date: string;
+  content: string;
+  classes?: string;
+}
+
+const { date, content, classes } = Astro.props as Props;
 ---
 
 <ul class:list={[`flex gap-2 font-mono`, classes]}>

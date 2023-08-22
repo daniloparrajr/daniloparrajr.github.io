@@ -2,7 +2,12 @@
 import { MENU_LINKS } from "@config";
 import Link from "./Link.astro";
 
-const { activeNav, classes = "", ...rest } = Astro.props;
+interface Props {
+  activeNav: string;
+  classes: string;
+}
+
+const { activeNav, classes = "", ...rest } = Astro.props as Props;
 ---
 
 <nav {...rest} class={`site-nav flex items-center gap-3 sm:gap-5 ${classes}`}>

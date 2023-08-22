@@ -1,7 +1,12 @@
 ---
 import { Icon } from "astro-icon";
 
-const { title, id } = Astro.props;
+interface Props {
+  title: string;
+  id: string;
+}
+
+const { title, id } = Astro.props as Props;
 ---
 
 <div id={id} class={`relative z-50 modal group/${id}`} aria-hidden="true">

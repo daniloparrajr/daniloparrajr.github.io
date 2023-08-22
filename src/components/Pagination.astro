@@ -2,6 +2,14 @@
 // component imports
 import Link from "./Link.astro";
 
+interface Props {
+  prevUrl: string;
+  nextUrl: string;
+  currentPage: number;
+  lastPage: number;
+  classes?: string;
+}
+
 const { prevUrl, nextUrl, currentPage, lastPage, classes } = Astro.props;
 
 const defaultClasses = "flex justify-between items-center text-sm sm:text-base";

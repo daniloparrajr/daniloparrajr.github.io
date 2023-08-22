@@ -2,7 +2,14 @@
 // Components imports
 import PostItem from "./PostItem.astro";
 
-const { posts, classes, title } = Astro.props;
+interface Props {
+  posts: [];
+  classes?: string;
+  title: string;
+}
+
+const { posts, classes, title } = Astro.props as Props;
+
 const defaultClasses =
   "[&>article:first-of-type]:border-t [&>article:first-of-type]:border-zinc-200 [&>article:first-of-type]:dark:border-zinc-700/40";
 ---
