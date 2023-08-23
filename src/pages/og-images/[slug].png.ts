@@ -26,8 +26,7 @@ export async function get(context: APIContext) {
     <div tw="flex flex-col w-full h-4/5 p-10 justify-center">
       <div tw="text-zinc-400 text-2xl mb-6">${formattedDate}</div>
       <div
-        tw="flex text-6xl w-full font-bold leading-snug tracking-tight text-transparent bg-red-400"
-        style="background-clip: text; -webkit-background-clip: text; background: linear-gradient(90deg, rgb(0, 124, 240), rgb(0, 223, 216));"
+        tw="flex text-6xl w-full font-bold leading-snug tracking-tight text-white"
       >
         ${title}
       </div>
@@ -40,7 +39,7 @@ export async function get(context: APIContext) {
           src="https://avatars.githubusercontent.com/u/25006926?v=4"
           tw="w-15 h-15 rounded-full"
         />
-        <span tw="ml-3 text-zinc-400">daniloparrajr.com</span>
+        <span tw="ml-3 text-zinc-400">Danilo Parra Jr</span>
       </div>
     </div>
   </div>`;
