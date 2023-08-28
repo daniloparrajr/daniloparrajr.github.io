@@ -1,0 +1,65 @@
+---
+title: Using the useBlockProps React hook in Block API version 2 or higher
+description: In Block API version 2 or higher, blocks must use `useBlockProps` hook to properly insert the attributes and event handlers needed to enable block behaviour.
+date: 2023-08-20
+tags: ["WordPress"]
+---
+
+import ExternalLink from "@components/ExternalLink.astro";
+
+You must use this hook in your block's edit and save function to insert the attributes and event handlers needed to enable block behaviour. Any attributes you wish to pass to the block element must be passed through `useBlockProps` and the returned value be spread onto the element.
+
+```javascript title="edit.js" {4-6}
+import { useBlockProps } from "@wordpress/block-editor";
+
+function Edit({ attributes }) {
+  const blockProps = useBlockProps({
+    style: { "--drop-cap-color": attributes.dropCapColor },
+  });
+  return <p {...blockProps}>{attributes.content}</p>;
+}
+```
+
+Use the `save()` function of `useBlockProps` hook in your block's `save` function to save your custom attributes.
+
+```javascript title="save.js" {4-6}
+import { useBlockProps } from "@wordpress/block-editor";
+
+export default function save({ attributes }) {
+  const blockProps = useBlockProps.save({
+    style: { "--drop-cap-color": attributes.dropCapColor },
+  });
+  return <p {...blockProps}>{attributes.content}</p>;
+}
+```
+
+Make sure you are using Block API version 2 or higher in your `block.json`.
+
+```javascript title="block.json" {3}
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/multi-columns",
+  "title": "Multi Columns",
+	"version": "0.1.0",
+  ...
+}
+```
+
+All of this will be automatically done for you if you use the `@wordpress/create-block` scaffolding tool of WordPress.
+
+## References
+
+<p>
+  <ExternalLink
+    text="Block API Versions"
+    href="https://developer.wordpress.org/block-editor/reference-guides/block-api/block-api-versions/"
+  />
+</p>
+
+<p>
+  <ExternalLink
+    text="Block API version 2 dev note"
+    href="https://make.wordpress.org/core/2020/11/18/block-api-version-2/"
+  />
+</p>
