@@ -1,0 +1,26 @@
+---
+title: How to get the author data outside the query loop
+description: Easily get the author data outside the WordPress query loop
+date: 2023-08-30
+tags: ["WordPress"]
+---
+
+import ExternalLink from "@components/ExternalLink.astro";
+
+There are scenarios where we want to get the current post's author outside the query loop. There are multiple ways to do this but the
+simpliest way is by using <ExternalLink text="get_post_field" href="https://developer.wordpress.org/reference/functions/get_post_field/" /> function.
+
+Once we get the author id, we can now use the <ExternalLink text="get_the_author_meta" href="https://developer.wordpress.org/reference/functions/get_the_author_meta/" /> function to get the author's meta data e.g. display name.
+
+```php
+// Get the current post id.
+$post_id = get_current_queried_id();
+
+// Get the current post author id.
+$post_author_id = get_post_field( 'post_author', $post_id );
+
+// Get the post author display name.
+$author_display_name = get_the_author_meta( 'display_name', $post_author_id );
+```
+
+Ofcourse you can also use this inside the query loop.
