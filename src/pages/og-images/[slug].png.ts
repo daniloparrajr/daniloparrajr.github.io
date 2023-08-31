@@ -18,7 +18,7 @@ interface Props {
   date: Date;
 }
 
-export async function get(context: APIContext) {
+export async function GET(context: APIContext) {
   const { title, date } = context.props as Props;
   const formattedDate = formatDate(date);
 
@@ -68,10 +68,7 @@ export async function get(context: APIContext) {
     },
   }).render();
 
-  return {
-    body: image.asPng(),
-    encoding: "binary",
-  };
+  return new Response(image.asPng());
 }
 
 export async function getStaticPaths() {

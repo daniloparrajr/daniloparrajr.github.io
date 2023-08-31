@@ -13,9 +13,6 @@ import expressiveCode from "astro-expressive-code";
 export default defineConfig({
   site: "https://daniloparrajr.com",
   compressHTML: true,
-  experimental: {
-    assets: true,
-  },
   image: {
     service: sharpImageService(),
   },
