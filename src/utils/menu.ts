@@ -5,7 +5,7 @@ const removeActiveMenuItem = (nav) => {
   });
 };
 
-const setActiveMenuItem = (nav, namespace) => {
+const setActiveMenuItem = (nav, namespace: string) => {
   const menuItems = nav.querySelectorAll("a");
   menuItems.forEach((menuItem) => {
     if (menuItem.dataset.namespace === namespace) {
@@ -14,7 +14,7 @@ const setActiveMenuItem = (nav, namespace) => {
   });
 };
 
-export const updateActiveMenuItem = (namespace) => {
+export const updateActiveMenuItem = (namespace: string) => {
   const navs = document.querySelectorAll(".site-nav");
 
   navs.forEach((nav) => {

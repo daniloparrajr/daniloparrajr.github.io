@@ -1,4 +1,4 @@
-export function slugify(text) {
+export function slugify(text: string) {
   return text
     .toString()
     .toLowerCase()
@@ -9,7 +9,7 @@ export function slugify(text) {
     .replace(/-+$/, "");
 }
 
-export function formatDate(date) {
+export function formatDate(date: string) {
   return new Date(date).toLocaleDateString("en-US", {
     timeZone: "UTC",
   });
@@ -22,10 +22,10 @@ export function filterPosts(
     filterOutFuturePosts = true,
     exclude = [],
     tags = [],
-    limit = undefined,
+    limit = null,
   } = {},
 ) {
-  const filteredPosts = posts.reduce((acc, post) => {
+  const filteredPosts = posts.reduce((acc: [], post) => {
     const { date, draft } = post.data;
     // filterOutDrafts if true
     if (filterOutDrafts && draft) return acc;
@@ -44,7 +44,9 @@ export function filterPosts(
     return acc;
   }, []);
 
-  filteredPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+  filteredPosts.sort(
+    (a: string, b: string) => new Date(b.data.date) - new Date(a.data.date),
+  );
 
   // limit if number is passed
   if (typeof limit === "number") {
@@ -54,7 +56,7 @@ export function filterPosts(
   return filteredPosts;
 }
 
-export function calcReadingTime(text) {
+export function calcReadingTime(text: string) {
   // https://dev.to/michaelburrows/calculate-the-estimated-reading-time-of-an-article-using-javascript-2k9l
   const wpm = 265;
   const words = text.trim().split(/\s+/).length;
