@@ -1,17 +1,18 @@
+import { SITE } from "@config";
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 import { formatDate, filterPosts } from "@utils/posts";
 
-export async function get(context) {
+export async function GET(context) {
   const blog = await getCollection("blog");
   const posts = filterPosts(blog);
 
   return rss({
     stylesheet: "/rss/styles.xsl",
     // `<title>` field in output xml
-    title: "Danilo Parra Jr",
+    title: SITE.author,
     // `<description>` field in output xml
-    description: "A humble Astronaut’s guide to the stars",
+    description: SITE.description,
     // Pull in your project "site" from the endpoint context
     // https://docs.astro.build/en/reference/api-reference/#contextsite
     site: context.site,
