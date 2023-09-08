@@ -2,6 +2,8 @@
 import { Icon } from "astro-icon";
 import MainNav from "./MainNav.astro";
 
+const { activeNav } = Astro.props;
+
 const currentYear = new Date().getFullYear();
 ---
 
@@ -13,7 +15,7 @@ const currentYear = new Date().getFullYear();
   </p>
 
   <div class="flex items-center mb-5 sm:mb-0 order-1 gap-3 sm:gap-5">
-    <MainNav />
+    <MainNav {activeNav} />
     <a data-barba-prevent href="/rss.xml"
       ><span class="sr-only">RSS feed</span><Icon
         name="ri:rss-line"

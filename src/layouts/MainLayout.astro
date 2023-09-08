@@ -22,7 +22,7 @@ const { title, description, type, ogImage, name } = Astro.props;
       <main data-barba="container" id={name} data-barba-namespace={name}>
         <slot />
       </main>
-      <Footer />
+      <Footer activeNav={name} />
     </div>
     <SearchModal />
     <script src="../scripts/siteTransitions.ts"></script>

@@ -4,7 +4,7 @@ import Link from "./Link.astro";
 
 interface Props {
   activeNav: string;
-  classes: string;
+  classes?: string;
 }
 
 const { activeNav, classes = "", ...rest } = Astro.props as Props;
