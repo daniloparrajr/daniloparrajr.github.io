@@ -4,6 +4,8 @@ import { filterPosts, slugify } from "@utils/posts";
 
 import Tag from "./Tag.astro";
 
+const { classes = "" } = Astro.props;
+
 const allPosts = await getCollection("blog");
 const formattedPosts: CollectionEntry<"blog">[] = filterPosts(allPosts);
 const allTags = formattedPosts.map((tag) => tag.data.tags).flat();
@@ -17,9 +19,11 @@ const processedTags = allTags.reduce((acc, tag) => {
     [tag]: value + 1,
   };
 }, {});
+
+const defaultClasses = "flex flex-wrap gap-3";
 ---
 
-<ul class="flex flex-wrap gap-3">
+<ul class:list={[defaultClasses, classes]}>
   {
     Object.entries(processedTags).map(([key, val]) => (
       <li>

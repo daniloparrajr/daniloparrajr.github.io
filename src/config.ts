@@ -19,11 +19,6 @@ export const MENU_LINKS = [
     name: "Articles",
     "data-namespace": "articles",
   },
-  {
-    slug: "tags",
-    name: "Tags",
-    "data-namespace": "tags",
-  },
 ];
 
 export const TAG_BASE_URL = "/tags/";
