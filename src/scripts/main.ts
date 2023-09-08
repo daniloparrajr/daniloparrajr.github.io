@@ -1,8 +1,12 @@
+import Lenis from "@studio-freight/lenis";
+
 import barba from "@barba/core";
 
 import { updateActiveMenuItem } from "@utils/menu";
 import { fadeInContents, hideContents } from "@utils/animations";
 import { resetDisqus, initDisqus } from "@utils/disqus";
+
+const lenis = new Lenis();
 
 barba.init({
   views: [
@@ -33,6 +37,16 @@ barba.init({
 
 // Global hooks
 barba.hooks.beforeEnter((data) => {
-  window.scrollTo({ top: 0, behavior: "smooth" });
   updateActiveMenuItem(data.next.namespace);
 });
+
+barba.hooks.afterLeave(() => {
+  lenis.scrollTo("top");
+});
+
+function raf(time: any) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
