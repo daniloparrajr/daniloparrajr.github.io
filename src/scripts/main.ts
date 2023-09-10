@@ -1,5 +1,4 @@
 import Lenis from "@studio-freight/lenis";
-
 import barba from "@barba/core";
 
 import { updateActiveMenuItem } from "@utils/menu";
@@ -9,6 +8,9 @@ import { resetDisqus, initDisqus } from "@utils/disqus";
 const lenis = new Lenis();
 
 barba.init({
+  prevent: ({ el }) => {
+    return el.classList && el.classList.contains("pagefind-ui__result-link");
+  },
   views: [
     {
       namespace: "article",
