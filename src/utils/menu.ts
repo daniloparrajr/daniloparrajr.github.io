@@ -5,20 +5,20 @@ const removeActiveMenuItem = (nav) => {
   });
 };
 
-const setActiveMenuItem = (nav, namespace: string) => {
+const setActiveMenuItem = (nav) => {
   const menuItems = nav.querySelectorAll("a");
   menuItems.forEach((menuItem) => {
-    if (menuItem.dataset.namespace === namespace) {
+    if (menuItem.getAttribute("href") === window.location.pathname) {
       menuItem.classList.add("active");
     }
   });
 };
 
-export const updateActiveMenuItem = (namespace: string) => {
+export const updateActiveMenuItem = () => {
   const navs = document.querySelectorAll(".site-nav");
 
   navs.forEach((nav) => {
     removeActiveMenuItem(nav);
-    setActiveMenuItem(nav, namespace);
+    setActiveMenuItem(nav);
   });
 };

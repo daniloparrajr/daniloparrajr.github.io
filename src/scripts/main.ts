@@ -38,8 +38,8 @@ barba.init({
 });
 
 // Global hooks
-barba.hooks.beforeEnter((data) => {
-  updateActiveMenuItem(data.next.namespace);
+barba.hooks.beforeEnter(() => {
+  updateActiveMenuItem();
 });
 
 barba.hooks.afterLeave(() => {

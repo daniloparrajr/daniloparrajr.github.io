@@ -12,12 +12,10 @@ export const MENU_LINKS = [
   {
     slug: "about",
     name: "About",
-    "data-namespace": "about",
   },
   {
     slug: "articles",
     name: "Articles",
-    "data-namespace": "articles",
   },
 ];
 
