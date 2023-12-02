@@ -1,0 +1,29 @@
+---
+title: Useful hooks for extending WordPress core blocks
+description: A comprehensive list of hooks developers can use to extend WordPress core blocks.
+date: 2023-12-02
+tags: ["WordPress"]
+draft: true
+---
+
+## Block styles
+
+`register_block_style` - Registers a new block style.
+
+
+```php title="functions.php"
+if ( ! function_exists( 'theme_block_styles' ) ) :
+	function theme_block_styles() {
+        register_block_style(
+            'core/quote',
+            array(
+                'name'         => 'blue-quote',
+                'label'        => __( 'Blue Quote', 'textdomain' ),
+                'is_default'   => true,
+                'inline_style' => '.wp-block-quote.is-style-blue-quote { color: blue; }',
+            )
+        );
+	}
+endif;
+add_action( 'init', 'theme_block_styles' );
+```
