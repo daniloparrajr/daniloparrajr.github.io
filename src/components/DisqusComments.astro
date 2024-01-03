@@ -1,0 +1,79 @@
+---
+import {SITE} from "@config";
+---
+
+<div class="disqus-container">
+    <div id="disqus_thread" data-website={SITE.website} class="mt-20"></div>
+    <script is:inline>
+        function resetDisqus() {
+            if (!window.hasOwnProperty('DISQUS')) {
+                return;
+            }
+
+            const disqusThread = document.getElementById('disqus_thread');
+
+            if (disqusThread === null) {
+                return;
+            }
+
+            const website = disqusThread.dataset.website;
+
+            DISQUS.reset({
+                reload: true,
+                config: function () {
+                    this.page.identifier = location.pathname;
+                    this.page.url = `${website}${location.pathname}#!newthread`;
+                },
+            });
+        }
+
+        function initDisqus() {
+            if (window.hasOwnProperty('DISQUS')) {
+                return;
+            }
+
+            const disqusThread = document.getElementById('disqus_thread');
+
+            if (disqusThread === null) {
+                return;
+            }
+
+            const website = disqusThread.dataset.website;
+
+            window.disqus_config = function () {
+                this.page.identifier = location.pathname;
+                this.page.url = `${website}${location.pathname}`;
+            };
+
+            (function () {
+                // DON'T EDIT BELOW THIS LINE
+                var d = document,
+                    s = d.createElement("script");
+                s.src = "https://daniloparrajr.disqus.com/embed.js";
+                s.setAttribute("data-timestamp", +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        }
+
+        document.addEventListener("themeChanged", function (e) {
+            if (document.readyState === "complete") {
+                resetDisqus();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', ev => {
+            initDisqus();
+        });
+
+        document.addEventListener('astro:page-load', ev => {
+            initDisqus();
+            resetDisqus();
+        });
+    </script>
+    <noscript>
+        Please enable JavaScript to view the
+        <a href="https://disqus.com/?ref_noscript" rel="nofollow">
+            comments powered by Disqus.
+        </a>
+    </noscript>
+</div>

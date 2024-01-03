@@ -51,7 +51,7 @@ const { title, id } = Astro.props as Props;
 <script>
   import MicroModal from "micromodal";
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('astro:page-load', () => {
     MicroModal.init({
       disableScroll: true,
       awaitOpenAnimation: true,
