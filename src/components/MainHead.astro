@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+
 import { SITE } from "@config";
 
 interface Props {
@@ -78,8 +80,8 @@ if (!title) {
   <script is:inline>
     const theme = (() => {
       if (
-        typeof localStorage !== "undefined" &&
-        localStorage.getItem("theme")
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
       ) {
         return localStorage.getItem("theme");
       }
@@ -91,13 +93,21 @@ if (!title) {
       return "light";
     })();
 
-    if (theme === "light") {
-      document.documentElement.classList.remove("dark");
-    } else {
-      document.documentElement.classList.add("dark");
+    function setTheme(document) {
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark");
+      } else {
+        document.documentElement.classList.add("dark");
+      }
+
+      window.localStorage.setItem("theme", theme);
     }
 
-    window.localStorage.setItem("theme", theme);
+    setTheme(window.document);
+
+    document.addEventListener('astro:before-swap', ev => {
+      setTheme(ev.newDocument);
+    });
   </script>
 
   {
@@ -110,4 +120,6 @@ if (!title) {
       ""
     )
   }
+
+  <ViewTransitions />
 </head>
