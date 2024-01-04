@@ -1,11 +1,14 @@
 // https://www.kevinzunigacuellar.com/blog/dark-mode-in-astro/
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function ThemeToggle({ classes }) {
   const [theme, setTheme] = useState("light");
+  const [isToggled, setIsToggled] = useState(false);
+  const firstRender = useRef(true);
 
   const handleClick = () => {
     setTheme(theme === "light" ? "dark" : "light");
+    setIsToggled(!isToggled);
   };
 
   useEffect(() => {
@@ -22,11 +25,18 @@ export default function ThemeToggle({ classes }) {
     }
 
     localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
 
     // Create and send event
     const event = new Event("themeChanged");
     document.dispatchEvent(event);
-  }, [theme]);
+  }, [isToggled]);
 
   return (
     <button
