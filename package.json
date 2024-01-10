@@ -18,6 +18,8 @@
   "dependencies": {
     "@fontsource-variable/inter": "^5.0.5",
     "@fontsource/ibm-plex-mono": "^5.0.5",
+    "@iconify-json/entypo-social": "^1.1.8",
+    "@iconify-json/ri": "^1.1.18",
     "@studio-freight/lenis": "^1.0.22",
     "astro-expressive-code": "^0.30.1",
     "gsap": "^3.12.2",
@@ -39,7 +41,7 @@
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
     "astro": "^4.0.7",
-    "astro-icon": "^0.8.2",
+    "astro-icon": "^1.0.2",
     "pagefind": "^1.0.4",
     "prettier": "^3.0.1",
     "prettier-plugin-astro": "^0.11.0",

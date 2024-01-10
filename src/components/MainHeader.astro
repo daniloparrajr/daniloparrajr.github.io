@@ -1,7 +1,7 @@
 ---
 import ThemeToggle from "./ThemeToggle";
 import MainNav from "./MainNav.astro";
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components'
 
 interface Props {
   activeNav: string;
@@ -31,7 +31,7 @@ const { activeNav } = Astro.props as Props;
       data-micromodal-trigger="searchModal"
     >
       <span class="sr-only">Search articles</span>
-      <Icon name="search" class="w-7" />
+      <Icon name="search" class="size-7" />
     </button>
 
     <ThemeToggle client:load />

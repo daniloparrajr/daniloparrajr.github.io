@@ -6,6 +6,7 @@ import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
 import { readFileSync } from "node:fs";
 import mdx from "@astrojs/mdx";
+import icon from "astro-icon";
 
 import expressiveCode from "astro-expressive-code";
 
@@ -29,6 +30,7 @@ export default defineConfig({
       theme: "one-dark-pro",
     }),
     mdx(),
+    icon(),
   ],
   vite: {
     plugins: [rawFonts([".ttf", ".woff"])],

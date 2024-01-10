@@ -1,6 +1,6 @@
 ---
 // library imports
-import { Icon } from "astro-icon";
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   text: string;
@@ -26,7 +26,7 @@ if (icon) {
 <a href={href} class:list={linkClasses} {...rest}>
   {
     icon && icon.side === "left" && (
-      <Icon name={icon.name} height="24" width="24" />
+      <Icon name={icon.name} class="size-7" />
     )
   }
 
@@ -34,7 +34,7 @@ if (icon) {
 
   {
     icon && icon.side === "right" && (
-      <Icon name={icon.name} height="24" width="24" />
+      <Icon name={icon.name} class="size-7" />
     )
   }
 </a>
