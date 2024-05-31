@@ -1,6 +1,6 @@
 ---
 // Icons
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 // component imports
 import TagList from "./TagList.astro";
@@ -26,7 +26,7 @@ const { title, date, description, tags } = data;
   <div class="flex-1">
     <TagList {tags} />
 
-    <TitleTag class="font-semibol mb-2 mt-8 text-xl">
+    <TitleTag class="font-semibold mb-2 mt-8 text-xl">
       <a href={url}>
         <span class="absolute inset-0 z-0"></span>
         <span class="z-10">{title}</span>

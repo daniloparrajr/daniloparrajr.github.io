@@ -1,6 +1,7 @@
 import { defineConfig, sharpImageService } from "astro/config";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeTOC from "rehype-toc";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import react from "@astrojs/react";
@@ -18,7 +19,7 @@ export default defineConfig({
     service: sharpImageService(),
   },
   markdown: {
-    rehypePlugins: [rehypeHeadingIds, rehypeAutolinkHeadings],
+    rehypePlugins: [rehypeHeadingIds, rehypeAutolinkHeadings, rehypeTOC],
   },
   integrations: [
     tailwind({
@@ -28,6 +29,9 @@ export default defineConfig({
     react(),
     expressiveCode({
       theme: "one-dark-pro",
+      styleOverrides: {
+        tabIndex: '-1',
+      },
     }),
     mdx(),
     icon(),
