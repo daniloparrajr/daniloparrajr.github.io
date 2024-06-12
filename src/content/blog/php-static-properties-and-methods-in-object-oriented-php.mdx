@@ -1,0 +1,59 @@
+---
+title: Static Properties & Methods In Object-Oriented PHP
+description: A summary of Static properties and methods in Object-Oriented PHP.
+date: 2024-06-12
+tags: ["PHP"]
+---
+
+import WideContent from "@components/WideContent.astro";
+import Alert from "@components/Alert.astro";
+
+## Introduction
+
+Static properties and methods belong to the class itself and not to any particular object/instance. You can use it directly using the class name.
+
+To define a static property or method simply add the keyword `static` before or after the access modifier.
+
+You can now access the static property/method by simply using the scope resolution operator `::` after the class name.
+
+When referencing static properties you can either use the keyword `self` or the class name.
+
+<Alert>
+    Since static methods is not associated with an object, you don't have access to the `$this` keyword. If a static method needs to have access to a non-static properties, then it should not be a static method.
+</Alert>
+
+<WideContent>
+```php
+class Transaction {
+   // Define $count property as static.
+	private static int $count = 15;
+
+	public function __construct(
+		public float $amount,
+		public string $description,
+	) {
+    // Using the keyword `self` to refer the static $count property.
+		self::$count++;
+	}
+
+	public static getCount() {
+    // a static method used to access the static property $count.
+		return self::$count;
+	}
+}
+
+// Using the scope resolution operator to access the static method.
+echo Transaction::getCount();
+```
+</WideContent>
+
+## Use-case of static methods and properties
+
+Using static properties and methods are generally bad practice because it's against the OOP principle. But there are some use-case for it.
+
+- cache some value e.g. as counter
+- memorization e.g. cache the result of some expensive operations.
+- singleton pattern
+- utility functions
+- factory pattern
+- static closure → to prevent access to object properties

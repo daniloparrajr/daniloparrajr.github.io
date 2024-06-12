@@ -78,6 +78,12 @@
     margin-right: calc(-50rem / 2 + 100% / 2);
     max-width: 50rem;
   }
+
+  .alert {
+    margin-left: calc(-45rem / 2 + 100% / 2);
+    margin-right: calc(-45rem / 2 + 100% / 2);
+    max-width: 45rem;
+  }
 }
 
 /* prevent content flickering when transitioning between pages */

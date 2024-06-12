@@ -1,0 +1,14 @@
+---
+// library imports
+import { Icon } from "astro-icon/components";
+---
+
+<div
+  class="alert px-6 py-8 border-l-4 border-indigo-600 rounded bg-slate-200 dark:bg-slate-800 relative mb-10 mt-10"
+>
+  <Icon
+    name="info"
+    class="size-11 rounded-full text-indigo-600 absolute -top-6 -left-6 bg-white dark:bg-zinc-900 p-1.5"
+  />
+  <div class="[&>*:first-child]:mt-0 [&>*:last-child]:mb-0"><slot /></div>
+</div>
