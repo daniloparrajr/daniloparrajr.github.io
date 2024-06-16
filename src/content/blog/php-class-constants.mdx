@@ -1,0 +1,60 @@
+---
+title: PHP Class Constants
+description: Learn how to define and use PHP Class Constants.
+date: 2024-06-16
+tags: ["PHP"]
+---
+
+import WideContent from "@components/WideContent.astro";
+import Alert from "@components/Alert.astro";
+
+## Introduction
+
+PHP constants are immutable meaning you can't change their value once it is defined. PHP allows developers to associate constants per class with the default visibility of public.
+
+<Alert>
+    Class constants can also be defined by a child class.
+</Alert>
+
+To define a class constant, use the `const` keyword followed by the constant property name and value. For constant's property name, it is a standard practice to use uppercase and underscore's for spacing.
+
+```php
+class Status {
+    private const PAID = 'paid';
+    public const PENDING = 'pending';
+}
+```
+
+Just like [static properties or methods](/php-static-properties-and-methods-in-object-oriented-php), class constants are allocated to the class itself and not to the class instance.
+
+This means you can also access the class constants outside by using the **scope resolution operator** and inside using either the class name or the `self` keyword.
+
+<Alert>
+    A class also have a built-in constant named `class` which resolves at compile time and returns a fully qualified class name.
+</Alert>
+
+```php
+namespace App\Modules;
+
+class Status {
+    private const PAID = 'paid';
+    public const PENDING = 'pending';
+
+    public getPaidStatus() {
+        return self::PAID; // or Status::PAID
+    }
+}
+
+$transaction = new Transaction();
+
+echo Status::PENDING; // pending
+echo $transaction->getPaidStatus(); // paid
+echo Status::class; // App\Modules\Status
+```
+
+## Use-case of class constants
+
+### Single source of truth
+
+If you have information that does not change, and you keep referencing it all over the code. It is better to move to a single class, this way if the time comes that you need to change the constant you just need to change it in one place.
+
