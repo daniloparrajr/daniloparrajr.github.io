@@ -1,0 +1,26 @@
+---
+title: PHP Abstract Classes and Methods
+description: Learn what PHP Abstract class is and when to use it.
+date: 2024-06-20
+tags: ["PHP"]
+---
+
+
+Is like a template or the base class that child classes can extend from using inheritance.
+
+## Rules
+### Parent class
+- Abstract classes cannot be instantiated, you can only extend it.
+- Abstract classes can contain regular methods and properties aside from abstract methods.
+- Abstract methods only have the definition and not the implementation. Knows the "what" but doesn't know the "how".
+- If a class have at least one abstract method the class should be abstract.
+
+### Child class
+- Child class must implement the parent's abstract methods.
+- TODO: Can child class inherit parents regular methods and properties? Probably yes
+- Overriding abstract method on child class can have custom parameters but must have default values to work.
+- Abstract method visibility should be either public or protected. TODO: Can I make a protected to public?
+- If  a child class doesn't implement the abstract method, the child class should be made abstract.
+
+## When should you use an abstract class?
+When you want to force the child classes to implement the methods while you provide some base functionalities.
