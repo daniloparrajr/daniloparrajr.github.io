@@ -30,9 +30,9 @@
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
-    "@astrojs/mdx": "^3.1.1",
+    "@astrojs/mdx": "^3.1.2",
     "@astrojs/react": "^3.6.0",
-    "@astrojs/rss": "^4.0.6",
+    "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/inter": "^5.0.17",
@@ -40,7 +40,7 @@
     "@tailwindcss/typography": "^0.5.12",
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
-    "astro": "^4.10.3",
+    "astro": "^4.11.3",
     "astro-icon": "^1.1.0",
     "pagefind": "^1.1.0",
     "prettier": "^3.2.5",
