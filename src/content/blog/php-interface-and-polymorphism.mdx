@@ -1,0 +1,46 @@
+---
+title: PHP Interface and Polymorphism
+description: TBD
+date: 2024-07-03
+tags: ["PHP"]
+---
+
+Interface is like a contract that defines all the necessary actions or methods that an object must have.
+
+## Rules
+- All methods defined within the interface should only be public.
+- Same compatibility rules apply to implemented methods; return value and parameters should match.
+- Classes can implement multiple interfaces.
+- You can extend another interface.
+- You cannot have properties on interfaces, but you can have constants.
+
+## Polymorphism
+
+Simple means "many forms", a class can be considered polymorphic if it passes multiple `instaceof` checks.
+Which would indicate that it can take many forms.
+
+Code to an interface instead of implementation - methods should not care of what the implementation.
+
+You can use interface as typehint on methods to support multiple classes also called *Polymorphism*.
+
+## Abstract vs Interface
+
+| Abstract      | Interface |
+| ----------- | ----------- |
+| can have regular methods | can only have method declarations |
+| can contain properties | can only have constants |
+| can have private and protected methods | can only have public methods |
+| can only extend a single class | can implement multiple interfaces |
+
+### Can Abstract classes and interface work together?
+
+YES! You can implement interfaces within your abstract classes. You can have an interface that defines a contract or set of methods that need to be implemented and then you define an abstract class that implements that interface. You're still enforcing the contract to your concrete classes while also providing some bae functionality.
+
+### When to use interface?
+
+## Can your class can have multiple implementations?
+- if yes then interface would be the way to go.
+- If you also found yourself checking for `typeof` conditions multiple times then interface and polymorphism could be use.
+- if you want a template without implementations details.
+
+
