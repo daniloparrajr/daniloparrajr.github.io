@@ -1,0 +1,51 @@
+---
+title: PHP Late Static Binding
+description: Learn what late static binding is in PHP.
+date: 2024-07-14
+tags: ["PHP"]
+---
+
+## The Problem
+
+On static methods, we use "self" to access static properties and methods. The problem is that the "self" keyword determines the calling class on compile time. It will always resolve to the class in which it is defined. So in the code below, `Electric_Car::getBrand()` will always return *Toyota* instead of *Tesla*.
+
+```php
+class Car {
+    protected static string $brand = 'Toyota';
+
+	public static function getBrand(): string
+	{
+		return self::$brand;
+	}
+}
+
+class Electric_Car extends Car {
+    protected static string $brand = 'Tesla';
+}
+
+echo Car::getBrand() . PHP_EOL; // Toyota
+echo Electric_Car::getBrand() . PHP_EOL; // Toyota
+```
+
+## The Solution: static keyword
+
+PHP introduce the `static` keyword on methods to get the calling class on run time.
+
+```php
+class Car {
+    protected static string $brand = 'Toyota';
+
+	public static function getBrand(): string
+	{
+		return static::$brand;
+	}
+}
+
+class Electric_Car extends Car {
+    protected static string $brand = 'Tesla';
+}
+
+echo Car::getBrand() . PHP_EOL; // Toyota
+echo Electric_Car::getBrand() . PHP_EOL; // Tesla
+```
+
