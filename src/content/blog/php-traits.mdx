@@ -1,0 +1,197 @@
+---
+title: PHP Traits
+description: Learn how to reduce code duplication and improve code re-use using PHP Traits.
+date: 2024-07-16
+tags: ["PHP"]
+---
+
+import WideContent from "@components/WideContent.astro";
+import Alert from "@components/Alert.astro";
+
+## Introduction
+
+PHP Traits intended use is to reduce code duplication and increase code reuse. If you have the same methods across classes then it is best to traits. To understand PHP Traits much easier, think of it as "copy and paste" where the traits code are inserted to the implementing class at compile time.
+
+Use the `trait` keyword to create a trait, and use the `use` keyword within the class to insert the trait.
+
+```php
+trait LatteTrait {
+	public function makeLatte() {
+		echo __CLASS__ . '';
+	}
+}
+
+class LatteMaker {
+	use LatteTrait;
+}
+```
+
+## Method precedence
+
+### Overriding Trait Methods
+
+Developers can override any trait methods by creating the same method name within the class.
+
+```php
+trait LatteTrait {
+    public function makeLatte(): string {
+       return __CLASS__ . PHP_EOL;
+    }
+
+    public function anotherTraitMethod(): string {
+       return __CLASS__ . PHP_EOL;
+    }
+}
+
+class LatteMarker {
+    use LatteTrait;
+
+    // Override the makeLatte method in LatteTrait!
+    public function makeLatte() {
+       echo 'From LatterMaker class!' . PHP_EOL;
+    }
+}
+
+$LatteMaker = new LatteMarker();
+echo $LatteMaker->makeLatte(); // From LatterMaker class!
+```
+
+### Overriding Parent Class Using Trait Methods In Child Class
+
+Trait methods will override any methods of the base class if the child class use it.
+
+```php
+trait LatteTrait {
+    public function makeLatte(): string {
+       return __CLASS__ . PHP_EOL;
+    }
+}
+
+class LatteMarker {
+    public function makeLatte(): string {
+       return 'From the Latter Marker class!';
+    }
+}
+
+// Child class using traits to override parent method.
+class LatteMarkerChild extends LatteMarker {
+    use LatteTrait;
+}
+
+$LatteMakerChild = new LatteMarkerChild();
+echo $LatteMakerChild->makeLatte(); // LatteMarkerChild
+```
+
+## Conflicting method names and properties
+
+When implementing multiple traits, same name methods will cause a conflict. There are two ways to get around this using the `insteadof` operator and `as` operator.
+
+### `insteadof` operator
+
+The `insteadof` operator lets you specify which method to run when there is a conflict between the method names.
+
+```php
+trait LatteTrait {
+	public function makeCoffee() {
+		echo __CLASS__ . 'is making coffee' . PHP_EOL;
+	}
+}
+trait CappuccinoTrait{
+	public function makeCoffee() {
+		echo __CLASS__ . 'is making coffee' . PHP_EOL;
+	}
+}
+
+// This will produce an error because both traits have the same makeCofee method.
+class CoffeeMaker{
+	use CappuccinoTrait;
+	// Use insteadof keyword to prevent conflicting method names.
+	use LatteTrait {
+		// use LatteTrait makeCoffee method instead of CappuccinoTrait.
+		LatteTrait::makeCoffee insteadof CappuccinoTrait;
+	};
+}
+```
+
+### `as` operator
+
+The `as` operator lets use alias the method to a different name.
+
+```php
+trait LatteTrait {
+	public function makeCoffee() {
+		echo __CLASS__ . 'is making coffee' . PHP_EOL;
+	}
+}
+trait CappuccinoTrait{
+	public function makeCoffee() {
+		echo __CLASS__ . 'is making coffee' . PHP_EOL;
+	}
+}
+
+// This will produce an error because both traits have the same makeCofee method.
+class CoffeeMaker{
+	use CappuccinoTrait;
+	// Use alias keyword to prevent conflicting method names.
+	use LatteTrait{
+		// rename the makeCofee method to makeOriginalCoffee to prevent name conflict.
+		LatteTrait::makeCoffee as makeOriginalCoffee;
+	};
+}
+```
+
+## Composing traits within other traits
+
+Developers can also use traits within traits.
+
+```php
+trait LatteTrait {
+	public function makeLatte() {
+		echo __CLASS__ . 'is making latte' . PHP_EOL;
+	}
+}
+
+trait CappuccinoTrait {
+	use LatteTrait;
+
+	public function makeCappuccino() {
+		echo __CLASS__ . 'is making cappuccino' . PHP_EOL;
+	}
+}
+
+class CoffeeMaker {
+	use CappuccinoTrait;
+	// use LatteTrait;
+}
+```
+
+## Properties within Traits
+
+The recommended way of addressing properties within traits is by having a setter method within the trait.
+
+```php
+trait LatteTrait {
+	private string $milkType = 'whole-milk';
+
+	public function makeLatte() {
+		echo __CLASS__ . 'is making latte using ' . $this->milkType . PHP_EOL ;
+	}
+
+	public function setMilkType(string $milkType): static {
+		$this->milkType = $milkType;
+
+		return $this;
+	}
+}
+
+class CoffeeMaker {
+	use LatteTrait ;
+}
+```
+
+## Static properties and methods within traits
+
+Traits can also have static properties, static methods and static variables. Unlike inheritance static properties are independent to the class that implements the trait. Unlike inheritance where static properties are shared.
+
+## Comparing Inheritance & traits
+Traits are best used if you want to share a method where inheritance is not applicable (is-a relationship).
